@@ -1,0 +1,563 @@
+.main-content-one {
+  flex: 1;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Search Section */
+.search-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.search-section h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.search-section p {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.combined-search {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  background-color: #ECECEC;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.combined-search:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-icon {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+}
+
+
+.search-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.search-input-one {
+  flex: 1;
+  padding: 12px 0 12px 10px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+
+.hero-search-area-one {
+  width: 900px;
+}
+
+
+.experience-filter-inline {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: none;
+  border-left: 1px solid #ddd;
+  background-color: transparent;
+  color: #666;
+  outline: none;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+
+.experience-filter-inline:hover {
+  background-color: #f5f5f5;
+}
+
+
+.view-profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+
+/* Top Candidates Section */
+.top-candidates-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+
+.top-candidates-section-one {
+  background: white;
+  padding: 30px;
+  height: 100%;
+  width: 1300px;
+}
+
+
+/* All Candidates Section */
+.all-candidates-section {
+  margin-top: 40px;
+}
+
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  margin-bottom: 20px;
+}
+
+
+.all-candidates-section h2 {
+  font-size: 24px;
+  color: #333;
+}
+
+
+.filters {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+
+.filters span {
+  cursor: pointer;
+}
+
+
+.filters span:hover {
+  color: #007bff;
+}
+
+
+.positiondiv {
+  position: absolute;
+}
+
+
+.candidate-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #D9D9D9;
+  border-radius: 5px;
+  height: 50%;
+}
+
+.seachcandidate{
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 145%;
+  letter-spacing: 0%;
+  color: #000000;
+}
+
+.EmployermassageGroup {
+  position: relative;
+  bottom: 2px;
+  left: 15px;
+  width: 30px;
+  height: auto;
+}
+
+
+/* Candidates Grid */
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+
+.candidate-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  position: relative;
+  height: 400px;
+}
+
+
+.candidate-card:hover {
+  transform: translateY(-5px);
+}
+
+
+.candidate-image-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+}
+
+
+.candidate-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 50%;
+}
+
+
+.verified-badge {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border: none;
+}
+
+
+.candidate-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+
+.candidate-card .role {
+  font-size: 14px;
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+
+.candidate-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+
+.candidate-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+
+.view-profile-btn {
+  padding: 10px 20px;
+  background-color: #191919CC;
+  color: #fff;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+
+.view-profile-btn:hover {
+  background-color: #0056b3;
+}
+
+
+.chat-btn-one {
+  padding: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chatimage {
+  width: 40px;
+}
+
+.chat-btn-one:hover {
+  background-color: #e0e0e0;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.pagination button:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination button:first-child,
+.pagination button:last-child {
+  padding: 8px 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content-one {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .combined-search {
+    width: 600px;
+  }
+
+  .hero-search-area-one {
+    width: 700px;
+  }
+
+  .top-candidates-section-one {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .candidates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-section h1 {
+    font-size: 24px;
+  }
+
+  .search-section p {
+    font-size: 14px;
+  }
+
+  .combined-search {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .hero-search-area-one {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .search-input-one {
+    font-size: 14px;
+  }
+
+  .experience-filter-inline {
+    font-size: 14px;
+    min-width: 100px;
+  }
+
+  .top-candidates-section h2,
+  .all-candidates-section h2 {
+    font-size: 20px;
+  }
+
+  .top-candidates-section-one {
+    padding: 15px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .candidates-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .candidate-card {
+    height: 350px;
+  }
+
+  .candidate-card h3 {
+    font-size: 16px;
+  }
+
+  .candidate-card .role,
+  .candidate-card p {
+    font-size: 13px;
+  }
+
+  .view-profile-btn {
+    padding: 8px 15px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .chatimage {
+    width: 30px;
+  }
+
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content-one {
+    padding: 10px;
+  }
+
+  .search-section {
+    margin-bottom: 20px;
+  }
+
+  .search-section h1 {
+    font-size: 20px;
+  }
+
+  .search-section p {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .combined-search {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 8px;
+  }
+
+  .search-icon {
+    padding: 8px;
+  }
+
+  .search-input-one {
+    padding: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .experience-filter-inline {
+    padding: 10px;
+    font-size: 13px;
+    min-width: auto;
+    border-left: none;
+    border-top: 1px solid #ddd;
+  }
+
+  .hero-search-area-one {
+    max-width: 100%;
+  }
+
+  .top-candidates-section h2,
+  .all-candidates-section h2 {
+    font-size: 18px;
+  }
+
+  .top-candidates-section-one {
+    padding: 10px;
+  }
+
+  .candidates-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .candidate-card {
+    height: 320px;
+  }
+
+  .candidate-image-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .verified-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    top: 40px;
+  }
+
+  .candidate-card h3 {
+    font-size: 14px;
+  }
+
+  .candidate-card .role,
+  .candidate-card p {
+    font-size: 12px;
+  }
+
+  .candidate-actions {
+    gap: 5px;
+  }
+
+  .view-profile-btn {
+    padding: 6px 12px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .chat-btn-one {
+    padding: 8px;
+  }
+
+  .chatimage {
+    width: 25px;
+  }
+
+  .pagination {
+    gap: 5px;
+  }
+
+  .pagination button {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}

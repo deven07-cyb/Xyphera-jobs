@@ -1,0 +1,449 @@
+ /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Container */
+.job-details-page-container {
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Job Details Content */
+.job-details-content {
+  padding: 60px 126px;
+  max-width: 1500px;
+  margin: 0 auto;
+  flex: 1;
+}
+ 
+.buttonforarrows {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+.buttonforarrows img {
+  width: 16px;
+  height: 16px;
+}
+
+.job-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.company-logo-placeholder {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.zomatoimagetwo {
+  width: 136px;
+  height: 102px;
+}
+
+.zomotoheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000000;
+}
+
+.job-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+   
+}
+
+.experience-level {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000000;
+  position:relative;
+  top: 60px;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position:relative;
+  top: 150px;
+}
+
+.save-button {
+  padding: 10px 20px;
+  border: 1px solid #033E8A;
+  background-color: #ffffff;
+  border-radius: 5px;
+  font-family: 'Gilroy-Bold', sans-serif;
+  font-size: 18px;
+  color: #033E8A;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 200px;
+  background: transparent;
+}
+
+.save-button:hover {
+  background-color: #033E8A;
+  color: #ffffff;
+}
+
+.share-icon img.imagesitearrowriht {
+  width: 47px;
+  height: 34px;
+}
+
+.job-description {
+  margin-bottom: 40px;
+}
+
+.fullheading {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+.job-description ul,
+.duties-section ul,
+.qualifications-section ul,
+.preferred-qualifications ul,
+.benefits-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.job-description ul li {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+
+.duties-section,
+.qualifications-section,
+.preferred-qualifications,
+.benefits-section {
+  margin-bottom: 40px;
+}
+
+.duties-section p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+.duties-section h2,
+.qualifications-section h3,
+.preferred-qualifications h3,
+.benefits-section h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+.duties-section h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.duties-section ul li,
+.qualifications-section ul li,
+.preferred-qualifications ul li,
+.benefits-section ul li {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.apply-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.apply-button {
+  padding: 10px 20px;
+  background-color: #033E8A;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Gilroy-Bold', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: #022b62;
+}
+
+/* Responsive Design */
+
+/* Tablet (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .job-details-content {
+    padding: 40px 60px;
+  }
+
+  .job-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .job-header-right {
+    align-items: flex-start;
+  }
+
+  .experience-level {
+    font-size: 20px;
+  }
+
+  .save-button {
+    font-size: 16px;
+    padding: 8px 16px;
+    width: 150px;
+  }
+   
+
+  .share-icon img.imagesitearrowriht {
+    width: 40px;
+    height: 28px;
+  }
+
+  .fullheading {
+    font-size: 16px;
+  }
+
+  .job-description ul li,
+  .duties-section p,
+  .duties-section ul li,
+  .qualifications-section ul li,
+  .preferred-qualifications ul li,
+  .benefits-section ul li {
+    font-size: 14px;
+  }
+ 
+
+
+
+  .duties-section h2,
+  .qualifications-section h3,
+  .preferred-qualifications h3,
+  .benefits-section h3 {
+    font-size: 18px;
+  }
+
+  .duties-section h4 {
+    font-size: 16px;
+  }
+
+  .apply-button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .buttonforarrows img {
+    width: 14px;
+    height: 14px;
+  }
+  .action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position:relative;
+  top: 20px;
+}
+}
+
+/* Mobile (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .job-details-content {
+    padding: 30px 40px;
+  }
+
+  .job-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .job-header-right {
+    align-items: flex-start;
+  }
+
+  .experience-level {
+    font-size: 18px;
+  }
+
+  .save-button {
+    font-size: 14px;
+    padding: 6px 12px;
+    width: 120px;
+  }
+
+  .share-icon img.imagesitearrowriht {
+    width: 35px;
+    height: 25px;
+  }
+
+  .fullheading {
+    font-size: 14px;
+  }
+
+  .job-description ul li,
+  .duties-section p,
+  .duties-section ul li,
+  .qualifications-section ul li,
+  .preferred-qualifications ul li,
+  .benefits-section ul li {
+    font-size: 13px;
+  }
+
+  .duties-section h2,
+  .qualifications-section h3,
+  .preferred-qualifications h3,
+  .benefits-section h3 {
+    font-size: 16px;
+  }
+
+  .duties-section h4 {
+    font-size: 14px;
+  }
+
+  .apply-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .buttonforarrows img {
+    width: 12px;
+    height: 12px;
+  }
+  .action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position:relative;
+  top: 20px;
+}
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 479px) {
+  .job-details-content {
+    padding: 20px 20px;
+  }
+
+  .job-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .job-header-right {
+    align-items: flex-start;
+  }
+
+  .experience-level {
+    font-size: 16px;
+  }
+
+  .save-button {
+    font-size: 12px;
+    padding: 5px 10px;
+    width: 100px;
+  }
+
+  .share-icon img.imagesitearrowriht {
+    width: 30px;
+    height: 22px;
+  }
+
+  .fullheading {
+    font-size: 12px;
+  }
+
+  .job-description ul li,
+  .duties-section p,
+  .duties-section ul li,
+  .qualifications-section ul li,
+  .preferred-qualifications ul li,
+  .benefits-section ul li {
+    font-size: 12px;
+  }
+
+  .duties-section h2,
+  .qualifications-section h3,
+  .preferred-qualifications h3,
+  .benefits-section h3 {
+    font-size: 14px;
+  }
+
+  .duties-section h4 {
+    font-size: 12px;
+  }
+
+  .apply-button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .buttonforarrows img {
+    width: 10px;
+    height: 10px;
+  }
+  .action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position:relative;
+  top: 20px;
+}
+.save-button{
+  font-size: 5px;
+
+}
+}
+
+
+ 

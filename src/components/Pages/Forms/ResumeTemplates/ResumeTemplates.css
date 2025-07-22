@@ -1,0 +1,246 @@
+/* Reuse CSS Variables */
+:root {
+  --primary-blue: #033E8A;
+  --primary-blue-dark: #033E8A;
+  --gray: #666666;
+  --white: #ffffff;
+  --black: #000000;
+  --border-color: #ccc;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 40px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 36px;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Main Container */
+.rt-resume-templates-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Resume Templates Content */
+.rt-resume-templates-content {
+  padding: 2rem 4rem;
+  max-width: 120rem;
+  margin: 0 auto;
+  flex-grow: 1;
+}
+
+/* Back Button */
+.rt-back-button-container {
+  margin-bottom: 1.5rem;
+  position: absolute;
+}
+jobsdata
+.rt-back-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: var(--primary-blue);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+r 
+.rt-back-arrow {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.rt-back-button:hover {
+  color: var(--primary-blue-dark);
+}
+
+/* Headings */
+.rt-headings {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.rt-resume-templates-content h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+
+.jobsdata {
+  color:  #033E8A; /* Highlight "Winning Resume" in blue */
+}
+
+.rt-resume-templates-content  {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+h2{
+  color: #000000;
+}
+
+/* Templates Grid */
+.rt-templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.rt-template-card {
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.rt-template-card:hover {
+  transform: scale(1.05);
+}
+
+.rt-template-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rt-template-card p {
+  font-size: 1.4rem;
+  color: var(--black);
+  padding: 1rem;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .rt-resume-templates-content {
+    padding: 2rem 4rem;
+  }
+
+  .rt-templates-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .rt-resume-templates-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .rt-resume-templates-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .rt-back-button {
+    font-size: 1.6rem;
+  }
+
+  .rt-back-arrow {
+    font-size: 2rem;
+  }
+}
+
+/* Tablet (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rt-resume-templates-content {
+    padding: 1.5rem 2rem;
+  }
+
+  .rt-templates-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rt-resume-templates-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .rt-resume-templates-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .rt-back-button {
+    font-size: 1.5rem;
+  }
+
+  .rt-back-arrow {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile (480px to 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .rt-resume-templates-content {
+    padding: 1rem 1.5rem;
+  }
+
+  .rt-templates-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rt-resume-templates-content h1 {
+    font-size: 2rem;
+  }
+
+  .rt-resume-templates-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .rt-back-button {
+    font-size: 1.4rem;
+  }
+
+  .rt-back-arrow {
+    font-size: 1.6rem;
+  }
+}
+
+/* Less Mobile (< 480px) */
+@media (max-width: 479px) {
+  .rt-resume-templates-content {
+    padding: 0.8rem 1rem;
+  }
+
+  .rt-templates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rt-resume-templates-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .rt-resume-templates-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .rt-back-button {
+    font-size: 1.3rem;
+  }
+
+  .rt-back-arrow {
+    font-size: 1.5rem;
+  }
+}

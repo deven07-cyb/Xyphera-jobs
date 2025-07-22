@@ -1,0 +1,98 @@
+ 
+
+/* Container for the entire page */
+.jp-jobs-page-container {
+    display: flex;
+     
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Light background color */
+  }
+  
+
+   
+  /* Content section below the header */
+  .jp-content {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Title styling */
+  .jp-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a2e5b; 
+    margin-bottom: 40px;
+  }
+
+  .Categories{
+    font-size: 32px;
+    font-weight: 700;
+    color: #033E8A;  
+    margin-bottom: 40px;
+  }
+  
+  /* Grid layout for job categories */
+  .jp-categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+     
+  }
+  
+  /* Individual category card */
+  .jp-category-card {
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    height: 398px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #BCBCBC;
+  }
+  
+  .jp-category-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Category icon styling */
+  .jp-category-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  
+  /* Category title styling */
+  .jp-category-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* View Jobs button styling */
+  .jp-view-jobs-btn {
+    display: inline-block;
+    background-color: #1a2e5b; /* Dark blue to match the header */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .jp-view-jobs-btn:hover {
+    background-color: #143f7a; /* Slightly darker blue on hover */
+  }

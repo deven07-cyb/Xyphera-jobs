@@ -1,0 +1,491 @@
+/* Define CSS Variables for Consistency */
+:root {
+  --primary-blue: #033E8A;
+  --primary-blue-dark: #033E8A;
+  --light-blue: #87CEEB;
+  --gray: #666666;
+  --white: #ffffff;
+  --black: #000000;
+  --border-color: #ccc;
+  --facebook-blue: #033E8A;
+  --google-white: #ffffff;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 40px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 28px;
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Main Container */
+.company-profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--white);
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Left Section */
+.company-profile-left-panel {
+  flex: 1;
+  padding: var(--spacing-lg);
+  background-image: url("https://i.ibb.co/ztswDmL/Rectangle-3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.company-profile-left-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(3, 62, 138, 0.3),
+    rgba(135, 206, 235, 0.3),
+    rgba(3, 62, 138, 0.3)
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.company-profile-main-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.2;
+  position: relative;
+  text-align: start;
+  z-index: 1;
+  background: linear-gradient(90deg, var(--white), var(--light-blue), var(--white));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 5s linear infinite;
+}
+
+@keyframes textGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.company-profile-stats-container {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.company-profile-stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: var(--spacing-sm);
+  color: var(--white);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.company-profile-stat-block:hover {
+  transform: translateY(-5px);
+  color: var(--light-blue);
+}
+
+.company-profile-stat-icon-bg {
+  height: 40px;
+  width: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: background 0.3s ease;
+}
+
+.company-profile-stat-block:hover .company-profile-stat-icon-bg {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.company-profile-stat-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.company-profile-stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--white);
+}
+
+.company-profile-stat-description {
+  font-size: var(--font-size-sm);
+  color: var(--white);
+}
+
+.company-profile-stat-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Right Section */
+.company-profile-right-panel {
+  flex: 1;
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.company-profile-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 400px;
+  background: var(--white);
+  padding: var(--spacing-md);
+  border-radius: 10px;
+}
+
+.company-profile-logo-placeholder {
+  width: 50px;
+  height: 50px;
+  background-color: var(--light-blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  color: var(--black);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  transition: transform 0.5s ease;
+}
+
+.company-profile-logo-placeholder:hover {
+  transform: rotate(360deg);
+}
+
+.company-profile-step-label {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.company-profile-form-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--black);
+  margin: 0 0 var(--spacing-sm) 0;
+  text-align: center;
+}
+
+.company-profile-form-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--gray);
+  margin: 0 0 var(--spacing-md) 0;
+  text-align: center;
+}
+
+.company-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.company-profile-form-animated {
+  opacity: 0;
+  animation: fadeInForm 1s ease forwards;
+}
+
+@keyframes fadeInForm {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.company-profile-form-row {
+  display: flex;
+  gap: var(--spacing-sm);
+  width: 100%;
+}
+
+.company-profile-input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: var(--font-size-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-profile-input {
+  flex: 1;
+  padding: var(--spacing-sm);
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-size: var(--font-size-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-profile-input-logo {
+  border: none;
+}
+
+.company-profile-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(3, 62, 138, 0.5);
+}
+
+select.company-profile-input {
+  appearance: none;
+  background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") no-repeat right 10px center;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+select.company-profile-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(3, 62, 138, 0.5);
+}
+
+.company-profile-input-half {
+  flex: 1;
+}
+
+.company-profile-upload-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #B0E1FF80;
+  font-size: var(--font-size-md);
+  color: var(--gray);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: none;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.company-profile-upload-btn:hover {
+  background-color: #B0E1FF80;
+}
+
+.company-profile-textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: var(--font-size-md);
+  resize: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-profile-textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 10px rgba(3, 62, 138, 0.5);
+}
+
+.company-profile-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: var(--spacing-md);
+}
+
+.company-profile-submit-btn:hover {
+  background-color: var(--primary-blue-dark);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(3, 62, 138, 0.3);
+}
+
+.company-profile-submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(3, 62, 138, 0.5);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .company-profile-wrapper {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .company-profile-left-panel,
+  .company-profile-right-panel {
+    flex: none;
+    width: 100%;
+    padding: var(--spacing-md);
+    min-height: auto;
+    height: auto;
+  }
+
+  .company-profile-main-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .company-profile-stat-value {
+    font-size: var(--font-size-md);
+  }
+
+  .company-profile-stat-description {
+    font-size: 12px;
+  }
+
+  .company-profile-stat-icon-img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .company-profile-step-label,
+  .company-profile-form-title {
+    font-size: var(--font-size-md);
+  }
+
+  .company-profile-form-subtitle {
+    font-size: 12px;
+  }
+
+  .company-profile-input {
+    font-size: var(--font-size-sm);
+  }
+
+  .company-profile-upload-btn {
+    width: 30px;
+    font-size: var(--font-size-sm);
+  }
+
+  .company-profile-textarea {
+    font-size: var(--font-size-sm);
+  }
+
+  .company-profile-submit-btn {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .company-profile-wrapper {
+    padding: 0;
+  }
+
+  .company-profile-left-panel,
+  .company-profile-right-panel {
+    padding: var(--spacing-sm);
+  }
+
+  .company-profile-main-title {
+    font-size: var(--font-size-md);
+  }
+
+  .company-profile-stat-value {
+    font-size: 14px;
+  }
+
+  .company-profile-stat-description {
+    font-size: 10px;
+  }
+
+  .company-profile-stat-icon-img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .company-profile-logo-placeholder {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .company-profile-step-label,
+  .company-profile-form-title {
+    font-size: 18px;
+  }
+
+  .company-profile-form-subtitle {
+    font-size: 10px;
+  }
+
+  .company-profile-input {
+    font-size: 13px;
+  }
+
+  .company-profile-upload-btn {
+    width: 30px;
+    font-size: 12px;
+  }
+
+  .company-profile-textarea {
+    font-size: 13px;
+  }
+
+  .company-profile-submit-btn {
+    font-size: 13px;
+  }
+}

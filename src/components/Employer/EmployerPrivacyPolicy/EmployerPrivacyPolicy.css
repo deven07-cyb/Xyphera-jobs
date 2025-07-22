@@ -1,0 +1,149 @@
+.homepage-wrapper {
+  background: linear-gradient(to bottom, #f5f7fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy-policy-wrapper {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.privacy-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a3557;
+  text-align: center;
+   
+  margin-top: 100px;
+}
+
+.updated-date {
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 50px;
+}
+
+.policy-section {
+  margin-bottom: 30px;
+}
+
+.policy-section h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #1a3557;
+}
+
+.policy-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+.policy-section ul {
+  list-style-type: disc;
+  padding-left: 25px;
+  margin: 0;
+}
+
+.policy-section ul li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .privacy-content {
+    padding: 20px 15px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .updated-date {
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+  }
+
+  .policy-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .policy-section p,
+  .policy-section ul li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .policy-section ul {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacy-content {
+    padding: 15px 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .updated-date {
+    font-size: 0.85rem;
+    margin-bottom: 30px;
+  }
+
+  .policy-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .policy-section p,
+  .policy-section ul li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .policy-section ul {
+    padding-left: 18px;
+  }
+}

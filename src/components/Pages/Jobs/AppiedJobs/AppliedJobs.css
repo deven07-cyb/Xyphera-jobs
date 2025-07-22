@@ -1,0 +1,369 @@
+ :root {
+   --primary-blue: #033E8A;
+   --primary-blue-dark: #033E8A;
+   --gray: #666666;
+   --white: #ffffff;
+   --black: #000000;
+   --border-color: #ccc;
+   --spacing-sm: 10px;
+   --spacing-md: 20px;
+   --spacing-lg: 40px;
+   --font-size-sm: 14px;
+   --font-size-md: 16px;
+   --font-size-lg: 24px;
+   --font-size-xl: 36px;
+ }
+
+ /* Reset and Base Styles */
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body {
+   font-family: 'Arial', sans-serif;
+   line-height: 1.6;
+ }
+
+ /* Main Container */
+ .aj-applied-jobs-container {
+   font-family: Arial, sans-serif;
+   color: #333;
+   width: 100%;
+   margin: 0 auto;
+   overflow-y: auto;
+   overflow-x: hidden;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+ }
+
+ /* Applied Jobs Content */
+ .aj-applied-jobs-content {
+   padding: 2rem 4rem;
+   max-width: 1400px;
+   margin: 0 auto;
+   flex-grow: 1;
+ }
+
+ /* Back Button */
+ .aj-back-button-container {
+   margin-bottom: 1.5rem;
+   position: relative;
+   right: 0px;
+ }
+ aj-view-status-button
+
+ .aj-back-button {
+   display: flex;
+   align-items: center;
+   background: none;
+   border: none;
+   font-size: 1.6rem;
+   color: var(--primary-blue);
+   cursor: pointer;
+   padding: 0;
+   transition: color 0.3s ease;
+ }
+
+
+ .aj-back-arrow {
+   font-size: 2rem;
+   margin-right: 0.5rem;
+ }
+
+ .aj-back-button:hover {
+   color: var(--primary-blue-dark);
+ }
+
+ /* Jobs List */
+ .aj-jobs-list {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+ }
+
+ .aj-job-item {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 1rem;
+   border-bottom: 2px solid #000000;
+ }
+
+ .aj-company-logo {
+   width: 169px;
+   height: 120px;
+   margin-right: 1rem;
+ }
+
+ .aj-job-info {
+   flex: 1;
+ }
+
+ .aj-job-info h3 {
+   font-size: 1.6rem;
+   font-weight: 600;
+   color: var(--black);
+   margin-bottom: 0.2rem;
+ }
+
+ .aj-job-info p {
+   font-size: 1.4rem;
+   color: var(--black);
+   margin: 0.2rem 0;
+ }
+
+ .aj-status-badge {
+   display: inline-block;
+   background-color: var(--primary-blue);
+   color: var(--white);
+   font-size: 6px;
+   font-weight: 500;
+   padding: 0.3rem 0.8rem;
+   border-radius: 12px;
+   border: none;
+   margin: 0.2rem 0;
+   text-transform: uppercase;
+ }
+
+ .aj-applied-date {
+   font-size: 1.2rem;
+   color: var(--primary-blue);
+ }
+
+ .aj-view-status-button {
+   padding: 0.5rem 1.5rem;
+   background-color: #033E8A;
+   border: none;
+   border-radius: 0.5rem;
+
+   font-weight: bold;
+   color: var(--white);
+   cursor: pointer;
+   text-transform: uppercase;
+   transition: background-color 0.3s ease;
+    
+   font-weight: 700;
+   line-height: 100%;
+   letter-spacing: 0%;
+   width: 178px;
+   height: 38px;
+   
+font-weight: 700;
+font-size: 32px;
+line-height: 100%;
+letter-spacing: 0%;
+ 
+
+ }
+.jobs{
+  color: #033E8A;
+}
+ .aj-view-status-button:hover {
+   background-color: #033E8A;
+ }
+
+ /* Media Queries for Responsiveness */
+
+ /* Desktop (≥ 1024px) */
+ @media (min-width: 1024px) {
+   .aj-applied-jobs-content {
+     padding: 2rem 4rem;
+   }
+
+   .aj-job-item {
+     padding: 1rem;
+     flex-direction: row;
+     align-items: center;
+   }
+
+   .aj-company-logo {
+     width: 40px;
+     height: 40px;
+   }
+
+   .aj-job-info h3 {
+     font-size: 1.6rem;
+   }
+
+   .aj-job-info p {
+     font-size: 1.4rem;
+   }
+
+   .aj-status-badge {
+     font-size: 1.2rem;
+   }
+
+   .aj-applied-date {
+     font-size: 1.2rem;
+   }
+
+   .aj-view-status-button {
+     font-size: 1.4rem;
+   }
+ }
+
+ /* Tablet (768px to 1023px) */
+ @media (min-width: 768px) and (max-width: 1023px) {
+   .aj-applied-jobs-content {
+     padding: 1.5rem 2rem;
+   }
+
+   .aj-job-item {
+     padding: 1rem;
+     flex-direction: column;
+     align-items: flex-start;
+     gap: 1rem;
+   }
+
+   .aj-job-info {
+     margin-bottom: 0.5rem;
+   }
+
+   .aj-view-status-button {
+     align-self: flex-end;
+     padding: 0.4rem 1.2rem;
+     font-size: 15px;
+     background-color: #033E8A;
+   }
+aj-back-button-container
+   .aj-company-logo {
+     width: 36px;
+     height: 36px;
+   }
+
+   .aj-job-info h3 {
+     font-size: 1.5rem;
+   }
+
+   .aj-job-info p {
+     font-size: 1.3rem;
+   }
+
+   .aj-status-badge {
+     font-size: 1.1rem;
+     padding: 0.2rem 0.6rem;
+   }
+
+   .aj-applied-date {
+     font-size: 1.1rem;
+   }
+
+   .aj-back-button {
+     font-size: 1.5rem;
+   }
+
+   .aj-back-arrow {
+     font-size: 1.8rem;
+   }
+ }
+
+ /* Mobile (480px to 767px) */
+ @media (min-width: 480px) and (max-width: 767px) {
+   .aj-applied-jobs-content {
+     padding: 1rem 1.5rem;
+   }
+
+   .aj-job-item {
+     padding: 1rem;
+     flex-direction: column;
+     align-items: flex-start;
+     gap: 1rem;
+   }
+
+   .aj-job-info {
+     margin-bottom: 0.5rem;
+   }
+
+   .aj-view-status-button {
+     align-self: flex-end;
+     padding: 0.4rem 1.2rem;
+     font-size: 1.2rem;
+   }
+
+   .aj-company-logo {
+     width: 32px;
+     height: 32px;
+   }
+
+   .aj-job-info h3 {
+     font-size: 1.4rem;
+   }
+
+   .aj-job-info p {
+     font-size: 1.2rem;
+   }
+
+   .aj-status-badge {
+     font-size: 1rem;
+     padding: 0.2rem 0.6rem;
+   }
+
+   .aj-applied-date {
+     font-size: 1rem;
+   }
+
+   .aj-back-button {
+     font-size: 1.4rem;
+   }
+
+   .aj-back-arrow {
+     font-size: 1.6rem;
+   }
+ }
+
+ /* Less Mobile (< 480px) */
+ @media (max-width: 479px) {
+   .aj-applied-jobs-content {
+     padding: 0.8rem 1rem;
+   }
+
+   .aj-job-item {
+     padding: 0.8rem;
+     flex-direction: column;
+     align-items: flex-start;
+     gap: 0.8rem;
+   }
+
+   .aj-job-info {
+     margin-bottom: 0.5rem;
+   }
+
+   .aj-view-status-button {
+     align-self: flex-end;
+     padding: 0.3rem 1rem;
+     font-size: 1.1rem;
+   }
+
+   .aj-company-logo {
+     width: 28px;
+     height: 28px;
+   }
+
+   .aj-job-info h3 {
+     font-size: 1.3rem;
+   }
+
+   .aj-job-info p {
+     font-size: 1.1rem;
+   }
+
+   .aj-status-badge {
+     font-size: 0.9rem;
+     padding: 0.2rem 0.5rem;
+   }
+
+   .aj-applied-date {
+     font-size: 0.9rem;
+   }
+
+   .aj-back-button {
+     font-size: 1.3rem;
+   }
+
+   .aj-back-arrow {
+     font-size: 1.5rem;
+   }
+ }

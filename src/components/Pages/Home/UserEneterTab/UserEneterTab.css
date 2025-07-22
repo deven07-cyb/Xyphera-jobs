@@ -1,0 +1,133 @@
+
+/* Main container to center the login box */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;  
+    padding: 20px;
+    font-family: "Roboto";
+  }
+  
+
+  /* Login box styling */
+  .loginBox {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 785px;  
+    height: 497px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .lodo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  /* Logo placeholder styling */
+  .logo {
+    width: 50px;
+    height: 50px;
+    background-color: #d3d3d3;  
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    color: #000000; 
+    font-size: 16px;
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;  
+    margin-bottom: 10px;
+  }
+  
+  /* Subtitle styling */
+  .subtitle {
+    font-size: 16px;
+    color: #5E6670;  
+    margin-bottom: 30px;
+  }
+  
+  /* Button styling */
+  .button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #000000;  
+    color: #ffffff;  
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #333333;  
+  }
+  
+   
+  
+  /* Tablets and smaller devices */
+  @media (max-width: 768px) {
+    .loginBox {
+      padding: 30px;
+      height: auto;  
+      max-width: 500px;  
+    }
+  
+    .title {
+      font-size: 20px;
+    }
+  
+    .subtitle {
+      font-size: 14px;
+    }
+  
+    .button {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Mobile devices */
+  @media (max-width: 480px) {
+    .loginBox {
+      padding: 20px;
+      max-width: 90%;  
+      border-radius: 8px;
+    }
+  
+    .logo {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+  
+    .title {
+      font-size: 18px;
+    }
+  
+    .subtitle {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+  
+    .button {
+      padding: 10px;
+      font-size: 13px;
+    }
+  }

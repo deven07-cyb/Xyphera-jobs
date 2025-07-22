@@ -1,0 +1,412 @@
+/* Main container for the split layout */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* Left section styling */
+.leftSection {
+    flex: 1;
+    padding: 40px;
+    margin-left: -20px;
+    margin-top: -40px;
+    text-align: left;
+    background-color: #FBFBFB;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover; /* Ensures background covers the entire left section */
+    background-position: center; /* Centers the background */
+    width: 50%; /* Ensures the left section takes full width of its flex portion */
+}
+
+.heading {
+    font-size: 42px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.statItem {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.statIcon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+    text-align: left;
+}
+
+.statNumber {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.statLabel {
+    font-size: 16px;
+    color: #666666;
+}
+
+/* Right section styling */
+.rightSection {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.mainRightContainer {
+    width: 90%;
+    max-width: 500px;
+    height: 70%; /* Decreased height */
+    max-height: 600px; /* Set a maximum height to limit vertical space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerRightContainer {
+    width: 100%;
+    max-width: 400px;
+    height: 90%; /* Decreased height relative to mainRightContainer */
+    max-height: 550px; /* Set a maximum height to limit vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0; /* Reduced padding to fit content in smaller height */
+}
+
+.signInTitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin-bottom: 5px;
+}
+
+.createAccountTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000000;
+    margin: 0 0 10px 0; /* Adjusted margin */
+}
+
+.createAccountSubtitle {
+    font-size: 14px;
+    color: #666666;
+    margin: 0 0 20px 0;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Reduced gap to fit in smaller height */
+    width: 100%;
+}
+
+.formRow {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.inputField {
+    flex: 1; /* Allows the input to take up available space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Rounded left corners only */
+    font-size: 16px;
+    border-right: none; /* Remove right border to connect with button */
+}
+
+.halfWidth {
+    flex: 1;
+    border-radius: 5px; /* Full border radius for paired inputs */
+    border-right: 1px solid #ccc; /* Restore right border for paired inputs */
+}
+
+.uploadButton1 {
+    width: 40px;
+    height: 100%;
+    background-color: #d3d3d3;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0; /* Rounded right corners only */
+    font-size: 16px;
+    color: #666666;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: none; /* Remove left border to connect with input */
+}
+
+.uploadButton:hover {
+    background-color: #c0c0c0;
+}
+
+.messageField {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+
+.signInButton {
+    width: 100%;
+    padding: 10px; /* Reduced padding */
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px; /* Added margin to match the image layout */
+}
+
+.signInButton:hover {
+    background-color: #333333;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and smaller devices */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .leftSection,
+    .rightSection {
+        flex: none;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .leftSection {
+        height: auto; /* Adjust height for column layout */
+        width: 100%; /* Full width in column layout */
+    }
+
+    .heading {
+        font-size: 30px;
+    }
+
+    .statNumber {
+        font-size: 20px;
+    }
+
+    .statLabel {
+        font-size: 14px;
+    }
+
+    .statIcon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .stats {
+        gap: 20px;
+    }
+
+    .mainRightContainer {
+        width: 100%;
+        max-width: 450px;
+        height: auto; /* Allow height to adjust based on content */
+        max-height: 500px; /* Adjusted for smaller screens */
+    }
+
+    .innerRightContainer {
+        width: 90%;
+        max-width: 350px;
+        height: auto; /* Allow height to adjust */
+        max-height: 450px; /* Adjusted for smaller screens */
+        align-items: center;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .signInTitle {
+        font-size: 14px;
+    }
+
+    .createAccountTitle {
+        font-size: 20px;
+    }
+
+    .createAccountSubtitle {
+        font-size: 12px;
+    }
+
+    .inputField {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .halfWidth {
+        border-radius: 5px; /* Full border radius when stacked */
+        border-right: 1px solid #ccc; /* Restore right border when stacked */
+    }
+
+    .uploadButton1 {
+        width: 30px;
+        height: 34.4px;
+        font-size: 14px;
+    }
+
+    .messageField {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .signInButton {
+        font-size: 14px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .leftSection,
+    .rightSection {
+        padding: 15px;
+    }
+
+    .leftSection {
+        height: auto;
+        width: 100%;
+    }
+
+    .heading {
+        font-size: 20px;
+    }
+
+    .statNumber {
+        font-size: 18px;
+    }
+
+    .statLabel {
+        font-size: 12px;
+    }
+
+    .statIcon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stats {
+        gap: 15px;
+    }
+
+    .mainRightContainer {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        max-height: 450px;
+    }
+
+    .innerRightContainer {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        max-height: 400px;
+        align-items: center;
+    }
+
+    .signInTitle {
+        font-size: 12px;
+    }
+
+    .createAccountTitle {
+        font-size: 18px;
+    }
+
+    .createAccountSubtitle {
+        font-size: 10px;
+    }
+
+    .inputField {
+        font-size: 13px;
+        padding: 6px;
+        width: 230px;
+    }
+
+    .halfWidth {
+        width: 100%;
+        border-radius: 5px; /* Full border radius when stacked */
+        border-right: 1px solid #ccc; /* Restore right border when stacked */
+    }
+
+    .uploadButton1 {
+        width: 30px;
+        height: 28.8px;
+        font-size: 12px;
+    }
+
+    .messageField {
+        font-size: 13px;
+        padding: 6px;
+        width: 230px;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .signInButton {
+        font-size: 13px;
+    }
+}

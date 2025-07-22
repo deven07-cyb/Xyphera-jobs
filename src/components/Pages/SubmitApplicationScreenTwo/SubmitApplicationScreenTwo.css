@@ -1,0 +1,227 @@
+ .submit-application-container-two {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  justify-content: space-between;
+  max-width: 1728px;
+  margin: 0 auto; /* Center the container */
+}
+
+.confirmation-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center;
+  padding: 20px;
+  background-image: url("/public/imageswebsite/backgroundwhite.png");
+  height: 800px;
+}
+
+.checkmark-circle {
+  width: 250px;
+  height: 250px;
+  background-color: #48C263;  
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.checkmark {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  width: 112px;
+  height: 72px;
+  border-width: 5px;
+}
+
+h1 {
+  font-size: 40px;
+  color: #000000;
+  margin-bottom: 10px;
+  font-weight: 700;
+  line-height: 145%;
+  letter-spacing: 0%;
+}
+
+p {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.done-button {
+  padding: 10px 30px;
+  font-size: 1rem;
+  color: #033E8A;
+  background-color: transparent;
+  border: 1px solid #033E8A;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.done-button:hover {
+  background-color: #f0f0f0;
+}
+
+.return-button {
+  padding: 10px 30px;
+  font-size: 1rem;
+  color: white;
+  background-color: #033E8A;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.return-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small screens (≤576px) - Mobile */
+@media (max-width: 576px) {
+  .submit-application-container-two {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .confirmation-section {
+    height: 600px; /* Reduce height for smaller screens */
+    padding: 15px;
+  }
+
+  .checkmark-circle {
+    width: 150px; /* Scale down the checkmark circle */
+    height: 150px;
+  }
+
+  .checkmark {
+    font-size: 30px; /* Scale down the checkmark */
+    width: 70px;
+    height: 45px;
+    border-width: 3px;
+  }
+
+  h1 {
+    font-size: 24px; /* Scale down the heading */
+    line-height: 130%;
+  }
+
+  p {
+    font-size: 0.875rem; /* 14px */
+    margin-bottom: 20px;
+  }
+
+  .button-group {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px;
+  }
+
+  .done-button,
+  .return-button {
+    padding: 8px 20px; /* Smaller padding */
+    font-size: 0.875rem; /* 14px */
+    width: 100%; /* Full width buttons */
+    max-width: 200px; /* Cap the width */
+  }
+}
+
+/* Medium screens (≤768px) - Tablets */
+@media (max-width: 768px) and (min-width: 577px) {
+  .submit-application-container-two {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .confirmation-section {
+    height: 700px; /* Slightly reduced height */
+    padding: 20px;
+  }
+
+  .checkmark-circle {
+    width: 200px; /* Slightly smaller checkmark circle */
+    height: 200px;
+  }
+
+  .checkmark {
+    font-size: 40px;
+    width: 90px;
+    height: 58px;
+    border-width: 4px;
+  }
+
+  h1 {
+    font-size: 32px; /* Slightly smaller heading */
+    line-height: 140%;
+  }
+
+  p {
+    font-size: 0.9375rem; /* 15px */
+    margin-bottom: 25px;
+  }
+
+  .button-group {
+    flex-direction: row; /* Keep buttons side by side */
+    gap: 15px;
+  }
+
+  .done-button,
+  .return-button {
+    padding: 9px 25px;
+    font-size: 0.9375rem; /* 15px */
+  }
+}
+
+/* Large screens (>768px) - Desktops */
+@media (min-width: 769px) {
+  .submit-application-container-two {
+    max-width: 1728px; /* Keep original max-width */
+  }
+
+  .confirmation-section {
+    height: 800px; /* Original height */
+  }
+
+  .checkmark-circle {
+    width: 250px; /* Original size */
+    height: 250px;
+  }
+
+  .checkmark {
+    font-size: 50px; /* Original size */
+    width: 112px;
+    height: 72px;
+    border-width: 5px;
+  }
+
+  h1 {
+    font-size: 40px; /* Original size */
+  }
+
+  p {
+    font-size: 1rem; /* Original size */
+  }
+
+  .done-button,
+  .return-button {
+    padding: 10px 30px; /* Original padding */
+    font-size: 1rem; /* Original size */
+  }
+}

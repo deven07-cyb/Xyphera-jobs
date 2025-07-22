@@ -1,0 +1,254 @@
+ 
+.emp-sub-plans-container {
+  background: linear-gradient(to bottom, #f5f7fa 0%, #ffffff 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.emp-sub-plans-content {
+  padding: 40px 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.emp-sub-plans-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1a3557;
+}
+emp-sub-toggle-button
+.emp-sub-heading-highlight {
+  color: #007bff;
+} 
+
+.emp-sub-toggle {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.1rem;
+  color: #666;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ECECEC;
+  width: 30%;
+  margin-left: 35%;
+}
+
+.emp-sub-toggle-button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s, font-weight 0.3s;
+}
+
+.emp-sub-toggle-button-one {
+  color: #191919;
+}
+
+.emp-sub-toggle-button-two {
+  background-color: #626262;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.emp-sub-toggle-active {
+  font-weight: 700;
+  color: #1a3557;
+}
+
+.emp-sub-plans-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.emp-sub-plan-card {
+  background: #ECECEC;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items:  start;
+  justify-content: flex-start;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.emp-sub-plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.emp-sub-plan-card-highlight {
+  border: 2px solid #1a3557;
+  background: #ffffff;
+}
+
+.emp-sub-plan-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.emp-sub-plan-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.emp-sub-plan-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.emp-sub-plan-card h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1a3557;
+  margin-bottom: 10px;
+}
+
+.emp-sub-price {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.emp-sub-price span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a3557;
+}
+
+.emp-sub-original-price {
+  font-size: 1rem;
+  color: #666;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.emp-sub-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.emp-sub-features li {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 12px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.emp-sub-features li img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.emp-sub-buy-now-button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  max-width: 200px;
+  transition: background-color 0.3s;
+}
+
+.emp-sub-buy-now-button:hover {
+  background-color: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .emp-sub-plans-content h1 {
+    font-size: 2rem;
+  }
+
+  .emp-sub-toggle {
+    width: 50%;
+    margin-left: 25%;
+    gap: 10px;
+    font-size: 1rem;
+  }
+
+  .emp-sub-plans-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .emp-sub-plan-card {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emp-sub-plans-content {
+    padding: 20px 10px;
+  }
+
+  .emp-sub-plans-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .emp-sub-toggle {
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+    gap: 8px;
+  }
+
+  .emp-sub-toggle-button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .emp-sub-plan-card {
+    padding: 20px 15px;
+  }
+
+  .emp-sub-plan-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .emp-sub-price span {
+    font-size: 1.6rem;
+  }
+
+  .emp-sub-features li {
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+
+  .emp-sub-buy-now-button {
+    padding: 10px 0;
+    font-size: 0.95rem;
+    max-width: 180px;
+  }
+}
+ 

@@ -1,0 +1,303 @@
+/* Reuse CSS Variables */
+:root {
+    --primary-blue: #033E8A;
+    --primary-blue-dark: #022b62;
+    --gray: #666666;
+    --white: #ffffff;
+    --black: #000000;
+    --border-color: #ccc;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 24px;
+    --font-size-xl: 36px;
+  }
+  
+  /* Reset and Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Main Container */
+  .application-review-page-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url("/public/imageswebsite/profilecheckbackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Job Summary Section */
+  .job-summary {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 80rem;
+    width: 100%;
+  }
+  
+  .job-summary-content h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+  }
+  
+  .job-summary-content .company-name {
+    font-size: 1.6rem;
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+  
+  .job-details {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .job-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    color: var(--black);
+  }
+  
+  .job-detail-item .icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .job-detail-item .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Application Review Content */
+  .application-review-content {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 80rem;
+    width: 100%;
+  }
+  
+  .application-review-content h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .contact-info-section {
+    margin-bottom: 2rem;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--black);
+  }
+  
+  .edit-button {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--primary-blue);
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    text-decoration: underline;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    font-size: 1.6rem;
+    color: var(--black);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    background-color: #f5f5f5;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+  }
+  
+  .resume-section {
+    margin-bottom: 2rem;
+  }
+  
+  .resume-section h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 1rem;
+  }
+  
+  .resume-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .uploaded-file {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+    color: var(--black);
+  }
+  
+  .uploaded-file .file-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .uploaded-file .file-size {
+    color: var(--gray);
+  }
+  
+  .uploaded-file .delete-icon {
+    cursor: pointer;
+  }
+  
+  .uploaded-file .delete-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--primary-blue);
+    border-radius: 0.5rem;
+  }
+  
+  .submit-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submit-button {
+    padding: 1rem 2rem;
+    background-color: var(--primary-blue);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    color: var(--white);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: var(--primary-blue-dark);
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* Desktop (≥ 1024px) */
+  @media (min-width: 1024px) {
+    .application-review-page-container {
+      padding: 2rem;
+    }
+  }
+  
+  /* Tablet (768px to 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .application-review-page-container {
+      padding: 1.5rem;
+    }
+  
+    .job-details {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .application-review-content {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Mobile (480px to 767px) */
+  @media (min-width: 480px) and (max-width: 767px) {
+    .application-review-page-container {
+      padding: 1rem;
+    }
+  
+    .job-details {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .application-review-content {
+      padding: 1rem;
+    }
+  
+    .submit-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  /* Less Mobile (< 480px) */
+  @media (max-width: 479px) {
+    .application-review-page-container {
+      padding: 0.8rem;
+    }
+  
+    .job-details {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .application-review-content {
+      padding: 0.8rem;
+    }
+  
+    .submit-button {
+      width: 100%;
+      text-align: center;
+    }
+  }

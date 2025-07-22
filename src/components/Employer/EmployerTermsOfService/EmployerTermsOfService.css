@@ -1,0 +1,153 @@
+.homepage-wrapper {
+  /* background: linear-gradient(to bottom, #d0bfbf 17%, #d0bfbf 17%); */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #B0E1FF2E 17%, #ffffff 17%);
+}
+
+.terms-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  flex-grow: 1;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px #4e4d4d;
+  
+}
+ 
+
+
+.terms-header {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 100px;
+   
+}
+
+.terms-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a3557;
+}
+
+.terms-header p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 8px;
+}
+
+.terms-section {
+  margin-bottom: 30px;
+}
+
+.terms-section h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #1a3557;
+}
+
+.terms-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0 0 12px;
+}
+
+.terms-section ul {
+  list-style-type: disc;
+  padding-left: 25px;
+  margin: 0;
+}
+
+.terms-section ul li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.terms-section ul li strong {
+  color: #333;
+  font-weight: 600;
+}
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terms-content {
+    padding: 20px 15px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+
+  .terms-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .terms-header p {
+    font-size: 0.9rem;
+  }
+
+  .terms-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .terms-section p,
+  .terms-section ul li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .terms-section ul {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terms-content {
+    padding: 15px 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+  }
+
+  .terms-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .terms-header p {
+    font-size: 0.85rem;
+  }
+
+  .terms-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .terms-section p,
+  .terms-section ul li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .terms-section ul {
+    padding-left: 18px;
+  }
+}

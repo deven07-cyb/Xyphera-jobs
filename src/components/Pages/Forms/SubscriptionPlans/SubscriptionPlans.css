@@ -1,0 +1,293 @@
+ /* CSS Variables for Consistency */
+:root {
+  --primary-blue: hsl(214, 98%, 20%);
+  --primary-blue-dark:  hsl(214, 98%, 20%);
+  --gray-50: #f9fafb;
+  --gray-200: #e5e7eb;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-900: #111827;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 10px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 15px 25px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Main Container */
+.sp-subscription-plans-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray-50);
+}
+
+/* Subscription Plans Content */
+.sp-subscription-plans-content {
+  padding: 4rem 1.5rem;
+  flex: 1;
+  text-align: center;
+}
+
+/* Page Heading */
+.sp-subscription-plans-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 3rem;
+}
+
+.sp-heading-highlight {
+  color: var( --primary-blue-dark);
+}
+
+/* Toggle Buttons */
+.sp-toggle {
+  display: inline-flex;
+  border: 2px solid var(--gray-200);
+  border-radius: 9999px;
+  padding: 0.5rem;
+  background-color: var(--white);
+  margin-bottom: 4rem;
+}
+
+.sp-toggle-button {
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gray-900);
+  background-color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sp-toggle-button:hover {
+  background-color: #f3f4f6; /* Equivalent to gray-100 */
+}
+
+.sp-toggle-button.sp-toggle-active {
+  background-color: var( --primary-blue-dark);
+  color: var(--white);
+}
+
+/* Plans List */
+.sp-plans-list {
+  max-width: 90rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3rem;
+  justify-items: center;
+}
+
+/* Plan Card */
+.sp-plan-card {
+  background-color: var(--white);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  min-height: 500px; /* Increased height to match larger design */
+}
+
+/* Highlighted Plan Card (Advanced) */
+.sp-plan-card-highlight {
+  transform: translateY(-1.5rem);
+  border: 3px solid var(--primary-blue);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Plan Header (Image + Title) */
+.sp-plan-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Plan Icon */
+.sp-plan-icon {
+  margin-right: 1rem;
+}
+
+.sp-plan-icon img {
+  height: 4rem;
+  width: 4rem;
+}
+
+/* Plan Title */
+.sp-plan-card h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  text-align: left;
+}
+
+/* Plan Price */
+.sp-price {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.sp-price span:first-child {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.sp-price .sp-original-price {
+  font-size: 1.5rem;
+  color: var(--gray-500);
+  text-decoration: line-through;
+  margin-right: 0.75rem;
+}
+
+.sp-price span:last-child {
+  font-size: 1.125rem;
+  color: var(--gray-600);
+}
+
+/* Features List */
+.sp-features {
+  flex: 1;
+  margin-bottom: 2rem;
+  list-style: none;
+}
+
+.sp-features li {
+  display: flex;
+  align-items: flex-start;
+  color: var(--gray-700);
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.sp-features li img {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+}
+
+/* Buy Now Button */
+.sp-buy-now-button {
+  width: 100%;
+  padding: 1rem;
+  background-color:   var(--primary-blue-dark);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.sp-buy-now-button:hover {
+  background-color: var(--primary-blue-dark);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small screens (≥640px) */
+@media (min-width: 640px) {
+  .sp-subscription-plans-content {
+    padding: 4rem 2rem;
+  }
+
+  .sp-subscription-plans-content h1 {
+    font-size: 4rem;
+  }
+
+  .sp-toggle-button {
+    font-size: 1.25rem;
+  }
+}
+
+/* Medium screens (≥768px) */
+@media (min-width: 768px) {
+  .sp-plans-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sp-subscription-plans-content {
+    padding: 4rem 3rem;
+  }
+}
+
+/* Large screens (≥1024px) */
+@media (min-width: 1024px) {
+  .sp-subscription-plans-content {
+    padding: 4rem 3rem;
+  }
+
+  .sp-plan-card {
+    max-width: 450px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .sp-plan-card-highlight {
+    transform: translateY(0);
+    border: 3px solid var(--primary-blue);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sp-subscription-plans-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .sp-toggle-button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Smaller mobile adjustments */
+@media (max-width: 479px) {
+  .sp-subscription-plans-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .sp-subscription-plans-content h1 {
+    font-size: 2rem;
+  }
+
+  .sp-toggle {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    display: inline-flex;
+    border: none;
+    padding: 0;
+  }
+
+  .sp-toggle-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--gray-200);
+    width: 180px;
+  }
+
+  .sp-plan-card {
+    max-width: 350px;
+    min-height: 450px;
+  }
+}

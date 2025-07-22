@@ -1,0 +1,232 @@
+ .application-container {
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+     font-family: 'Inter', Arial, sans-serif;
+     background-color: #cfcdcd;
+ }
+
+ .application-content {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 40px 20px;
+     background-image: url("/public/imageswebsite/backgroundwhite.png");
+     padding-top: 150px;
+ }
+
+ .application-form-container {
+     background-color: #fff;
+     border-radius: 10px;
+     width: 80%;
+     max-width: 1151px;
+     padding: 40px;
+     box-shadow: 0 2px 5px #DBDBDB;
+     border: 2px solid #DBDBDB;
+     margin-top: -100px;
+ }
+
+ .application-heading {
+     font-size: 32px;
+     font-weight: 700;
+     color: #000;
+     text-align: center;
+     margin-bottom: 40px;
+ }
+
+ .contact-info-section {
+     margin-bottom: 40px;
+ }
+
+ .contact-info-header {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-bottom: 20px;
+     position: relative;
+ }
+
+ .contact-info-title {
+     font-weight: 700;
+     font-size: 18px;
+     color: #000000;
+ }
+
+ .edit-button {
+     display: flex;
+     align-items: center;
+     background: none;
+     border: none;
+     cursor: pointer;
+     position: absolute;
+     right: 40px;
+     top: 0;
+ }
+
+ .edit-label {
+     color: #000000;
+     font-weight: 700;
+     font-size: 14px;
+     margin-left: 5px;
+ }
+
+ .form-field {
+     margin-bottom: 20px;
+     display: flex;
+     justify-content: center;
+ }
+
+ .form-input {
+     padding: 10px 0;
+     font-size: 18px;
+     font-weight: 700;
+     color: #000000;
+     text-align: center;
+     width: 50%;
+ }
+
+ .form-input::placeholder {
+     color: #000000;
+     font-weight: 700;
+     font-size: 18px;
+ }
+
+ .resume-section-one {
+     margin-top: 40px;
+ }
+
+ .resume-title {
+     font-size: 16px;
+     font-weight: 600;
+     color: #333;
+     text-align: center;
+     margin-bottom: 20px;
+ }
+
+ .resume-upload {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     margin-bottom: 20px;
+     padding-left: 150px;
+     padding-right: 150px;
+     margin-top: 100px;
+
+ }
+
+ .resume-details {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+     margin-left: 10px;
+     margin-right: 10px;
+     gap: 10px;
+ }
+
+ .my-cv {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+
+ }
+
+ .resume-file-name {
+     font-size: 18px;
+     font-weight: 500;
+     color: #333;
+ }
+
+ .resume-file-size {
+     font-size: 14px;
+     font-weight: 400;
+     color: #000000;
+ }
+
+ .delete {
+     width: 24px;
+     height: 24px;
+     cursor: pointer;
+ }
+
+ .divider-line {
+     height: 8px;
+     background-color: #1e3a8a;
+     margin: 30px 0;
+     border-radius: 23px;
+     width: 100%;
+     max-width: 793px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .submit-button-container {
+     display: flex;
+     justify-content: center;
+     margin-top: 30px;
+ }
+
+ .submit-application-button {
+     width: 200px;
+     padding: 15px;
+     background-color: #1e3a8a;
+     color: #fff;
+     font-size: 16px;
+     font-weight: 600;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+ .submit-application-button:hover {
+     background-color: #2b4ba3;
+ }
+
+ /* Responsive Design */
+ @media (max-width: 1200px) {
+     .application-form-container {
+         width: 90%;
+         max-width: 900px;
+     }
+
+     .form-input {
+         width: 70%;
+     }
+
+     .resume-upload {
+         flex-direction: column;
+         text-align: center;
+     }
+
+     .resume-details {
+         margin: 10px 0;
+     }
+
+     .edit-button {
+         position: relative;
+         right: 0;
+         margin-top: 10px;
+     }
+ }
+
+ @media (max-width: 768px) {
+     .application-heading {
+         font-size: 24px;
+     }
+
+     .contact-info-title {
+         font-size: 16px;
+     }
+
+     .form-input {
+         width: 90%;
+     }
+
+     .submit-application-button {
+         width: 150px;
+     }
+ }

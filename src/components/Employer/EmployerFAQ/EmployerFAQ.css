@@ -1,0 +1,79 @@
+.employer-faq-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.employer-faq-content {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.employer-faq-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* FAQ Container */
+.employer-faq-container {
+  background-color: #C7C7C75C;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.employer-faq-entry {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+ 
+.employer-faq-query {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 2px solid #C7C7C75C;
+}
+
+.employer-faq-query:hover {
+  color: #124C9D;
+}
+
+.employer-faq-toggle {
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+
+.employer-faq-entry.expanded .employer-faq-toggle {
+  transform: rotate(0deg); /* Note: Original CSS had 'rotate(deg)' which is invalid; keeping transform for consistency */
+}
+
+.employer-faq-response {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 20px 0 20px;
+  line-height: 1.5;
+  display: none;
+}
+
+.employer-faq-entry.expanded .employer-faq-response {
+  display: block;
+}
+
+/* Ensure only one FAQ response is visible at a time */
+.employer-faq-entry .employer-faq-response {
+  display: none;
+}
+
+.employer-faq-entry.expanded .employer-faq-response {
+  display: block;
+}

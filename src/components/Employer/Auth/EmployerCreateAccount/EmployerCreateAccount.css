@@ -1,0 +1,15 @@
+
+.create-accountTypeSelect-one{
+   background-color: #B0E1FF80;
+   border:none;
+}
+
+
+.labledata{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   text-wrap: nowrap;
+   
+}

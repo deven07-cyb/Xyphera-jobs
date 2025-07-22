@@ -1,0 +1,334 @@
+/* Define CSS Variables */
+:root {
+    --primary-blue: #033E8A;
+    --primary-blue-dark: #022b62;
+    --gray: #666666;
+    --white: #ffffff;
+    --black: #000000;
+    --font-size-xl: 2.8rem; /* Reduced from 3.6rem to match the image */
+  }
+  
+  /* Reset and Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .homepage-container {
+    font-family: "Roboto", sans-serif;
+    min-height: 100vh; /* Ensure the container takes up the full viewport height */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background-color: var(--primary-blue);
+    color: var(--white);
+  }
+  
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  
+  .logo-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--white);
+    border-radius: 50%;
+  }
+  
+  /* Career Move Section */
+  .career-move-section {
+    flex: 1; /* Take up the remaining height after the header */
+    display: flex;
+    align-items:   center; /* Ensure the child containers are centered vertically */
+    justify-content: center;
+  }
+  
+  /* Career Move Content */
+  .career-move-content {
+    display: flex;
+    flex: 1; /* Take up the full available space */
+    gap: 10px; /* Kept the small gap as specified */
+    align-items: stretch; /* Ensure the child containers stretch to fill the height */
+     
+    max-width: none; /* Remove max-width to take up full width */
+    margin: 0; /* Remove margin to take up full width */
+  }
+  
+  /* Text Section */
+  .career-move-text {
+    flex: 1; /* Equal width for both sections */
+    background-color: #FFFFFF; /* White background as specified */
+    display: flex;
+    flex-direction: column;
+    justify-content:   center; /* Center the content vertically */
+    align-items:  flex-start; /* Center the content horizontally */
+    padding: 4rem; /* Add padding inside the container for spacing */
+  }
+  
+  /* Verified Companies Label */
+  .verified-companies {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.8rem; /* Reduced from 24px (1.5rem) to match the image */
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    text-align: start;
+  }
+  
+  .verified-icon img {
+    width: 1.2rem; /* Slightly reduced to match the image */
+    height: 1.2rem;
+  }
+  
+  /* Heading */
+  .career-move-text .section-title {
+    font-size: var(--font-size-xl); /* Now 2.8rem */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--black);
+    margin-bottom: 1rem;
+    text-align: start;
+  }
+  
+  /* Subheading */
+  .career-move-text .section-subtitle {
+    font-size: 1.4rem; /* Reduced from 1.6rem to match the image */
+    color: var(--gray);
+    margin-bottom: 2rem;
+    text-align:  start; /* Center the subheading */
+  }
+  
+  /* Buttons */
+  .career-move-buttons {
+    display: flex;
+    gap: 1.5rem; /* Kept the gap as specified */
+    margin-bottom: 1rem;
+  }
+  
+  .career-move-buttons .cta-button {
+    padding: 0.8rem 1.6rem; /* Reduced padding to make buttons smaller */
+    border-radius: 0.5rem;
+    font-size: 1.4rem; /* Reduced from 1.6rem to match the image */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+  }
+  
+  .career-move-buttons .create-account {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+  }
+  
+  .career-move-buttons .create-account:hover {
+    background-color: var(--primary-blue-dark);
+  }
+  
+  .career-move-buttons .log-in {
+    background-color: var(--white);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+  }
+  
+  .career-move-buttons .log-in:hover {
+    background-color: #e5e5e5;
+  }
+  
+  /* Skip Link */
+  .skip-link {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-size: 1.2rem; /* Reduced from 1.4rem to match the image */
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .skip-link:hover {
+    color: var(--primary-blue-dark);
+  }
+  
+  /* Image Section */
+  .career-move-image {
+    flex: 1; /* Equal width for both sections */
+    background-color: #A6D0F430; /* Light blue background as specified */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    padding: 50px; /* Kept the padding as specified */
+  }
+  
+  /* Image */
+  .employee-image {
+    width: 70%; /* Reduced from 70% to make the image smaller */
+    height: 110%; /* Reduced from 100% to make the image smaller */
+    /* background-image: url('C:\Users\bavir\xyjobboardapplication\public\imageswebsite\welcomeemployeerightimage.png');  */
+    background-size: cover; 
+    background-position: center;
+    border-radius: 1rem;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* Desktop (≥ 1024px) */
+  @media (min-width: 1024px) {
+    .career-move-text .section-title {
+      font-size: var(--font-size-xl); /* 2.8rem */
+    }
+  
+    .career-move-text .section-subtitle {
+      font-size: 1.4rem;
+    }
+  
+    .career-move-buttons .cta-button {
+      font-size: 1.4rem;
+    }
+  
+    .skip-link {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Tablet (768px to 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .career-move-content {
+      flex-direction: column;
+    }
+  
+    .career-move-text {
+      text-align: center;
+      align-items: center; /* Center the content on tablet */
+      height: auto; /* Adjust height for stacking */
+      padding: 3rem;
+    }
+  
+    .career-move-text .section-title {
+      font-size: 2.4rem; /* Reduced from 2.8rem */
+    }
+  
+    .career-move-text .section-subtitle {
+      font-size: 1.2rem; /* Reduced from 1.4rem */
+    }
+  
+    .career-move-buttons {
+      justify-content: center;
+    }
+  
+    .career-move-buttons .cta-button {
+      font-size: 1.2rem; /* Reduced from 1.4rem */
+    }
+  
+    .skip-link {
+      font-size: 1rem; /* Reduced from 1.2rem */
+    }
+  
+    .career-move-image {
+      height: 50vh; /* Adjust height for tablet */
+    }
+  
+    .employee-image {
+      width: 60%; /* Slightly larger on tablet */
+      height: 80%; /* Slightly larger on tablet */
+    }
+  }
+  
+  /* Mobile (480px to 767px) */
+  @media (min-width: 480px) and (max-width: 767px) {
+    .career-move-content {
+      flex-direction: column;
+    }
+  
+    .career-move-text {
+      text-align: center;
+      align-items: center;
+      height: auto;
+      padding: 2rem;
+    }
+  
+    .career-move-text .section-title {
+      font-size: 2rem; /* Reduced from 2.4rem */
+    }
+  
+    .career-move-text .section-subtitle {
+      font-size: 1rem; /* Reduced from 1.2rem */
+    }
+  
+    .career-move-buttons {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .career-move-buttons .cta-button {
+      font-size: 1rem; /* Reduced from 1.2rem */
+    }
+  
+    .skip-link {
+      font-size: 0.9rem; /* Reduced from 1rem */
+    }
+  
+    .career-move-image {
+      height: 40vh; /* Adjust height for mobile */
+    }
+  
+    .employee-image {
+      width: 70%; /* Slightly larger on mobile */
+      height: 80%; /* Slightly larger on mobile */
+    }
+  }
+  
+  /* Less Mobile (< 480px) */
+  @media (max-width: 479px) {
+    .career-move-content {
+      flex-direction: column;
+    }
+  
+    .career-move-text {
+      text-align: center;
+      align-items: center;
+      height: auto;
+      padding: 1.5rem;
+    }
+  
+    .career-move-text .section-title {
+      font-size: 1.8rem; /* Reduced from 2rem */
+    }
+  
+    .career-move-text .section-subtitle {
+      font-size: 0.9rem; /* Reduced from 1rem */
+    }
+  
+    .career-move-buttons {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .career-move-buttons .cta-button {
+      font-size: 0.9rem; /* Reduced from 1rem */
+    }
+  
+    .skip-link {
+      font-size: 0.8rem; /* Reduced from 0.9rem */
+    }
+  
+    .career-move-image {
+      height: 30vh; /* Adjust height for smaller mobile screens */
+    }
+  
+    .employee-image {
+      width: 80%; /* Slightly larger on smaller mobile */
+      height: 80%; /* Slightly larger on smaller mobile */
+    }
+  }

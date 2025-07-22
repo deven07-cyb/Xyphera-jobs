@@ -1,0 +1,479 @@
+/* Define CSS Variables for Consistency */
+:root {
+  --primary-blue: #0052cc;
+  --primary-blue-dark: #003a8c;
+  --white: #ffffff;
+  --black: #141b34;
+  --gray: #6b7280;
+  --light-gray: #f7fafc;
+}
+
+/* General Styles */
+.homepage-wrapper {
+  font-family: 'Inter', sans-serif;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+/* Messages Wrapper */
+.messages-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 200px);
+  background-color: var(--white);
+  padding: 20px;
+}
+
+/* Messages Container */
+.messages-container {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.messages-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--black);
+}
+
+/* Search Bar */
+.search-bar-wrapper {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.search-icon-wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon-image {
+  width: 18px;
+  height: 18px;
+}
+
+.search-input-field {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.search-clear-button {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.search-clear-button:hover {
+  color: var(--black);
+}
+
+/* Messages Content */
+.messages-content {
+  display: flex;
+  gap: 20px;
+}
+
+/* Candidates List */
+.candidates-list {
+  width: 25%;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.candidates-header {
+  margin-bottom: 15px;
+}
+
+.candidates-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+
+.sort-by {
+  font-size: 0.9rem;
+  color: var(--primary-blue);
+  cursor: pointer;
+}
+
+.sort-by:hover {
+  text-decoration: underline;
+}
+
+.candidate-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.candidate-item.active {
+  background-color: #e6f0fa;
+}
+
+.candidate-item:hover {
+  background-color: #f7fafc;
+}
+
+.candidate-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.candidate-info {
+  text-align: left;
+  flex: 1;
+}
+
+.candidate-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 2px;
+}
+
+.candidate-job {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 2px;
+}
+
+.candidate-message {
+  font-size: 13px;
+  color: var(--gray);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chat Section */
+.chat-section {
+  width: 50%;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  margin-bottom: 20px;
+}
+
+.chat-candidate-info {
+  display: flex;
+  align-items: center;
+}
+
+.chat-candidate-info .candidate-avatar.large {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+.chat-candidate-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 2px;
+}
+
+.chat-applied-status {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.message {
+  margin-bottom: 15px;
+}
+
+.message-sender {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.message-time {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.message-content {
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.5;
+}
+
+.attachments {
+  margin-top: 10px;
+}
+
+.attachments-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 5px;
+}
+
+.attachment-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.attachment {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.attachment svg {
+  margin-left: 5px;
+}
+
+.download-all {
+  font-size: 13px;
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+
+.download-all:hover {
+  text-decoration: underline;
+}
+
+.message-input-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.message-input-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+.message-input-field {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.message-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.action-icon {
+  cursor: pointer;
+}
+
+.action-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.send-message-button {
+  background-color: #1a1a1a;
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-message-button:hover {
+  background-color: #333;
+}
+
+/* Candidate Details */
+.candidate-details {
+  width: 25%;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.details-candidate-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 5px;
+}
+
+.details-applied-status {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 15px;
+}
+
+.job-details,
+.contact-details,
+.notes {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.job-title {
+  font-size: 13px;
+  color: var(--black);
+  margin-bottom: 5px;
+}
+
+.job-info {
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.contact-details .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0;
+  font-size: 13px;
+  color: var(--black);
+}
+
+.contact-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.notes-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  font-size: 13px;
+  color: var(--black);
+}
+
+.notes-textarea::placeholder {
+  color: var(--gray);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .messages-content {
+    flex-direction: column;
+  }
+
+  .candidates-list,
+  .chat-section,
+  .candidate-details {
+    width: 100%;
+  }
+
+  .chat-candidate-info .candidate-avatar.large {
+    width: 40px;
+    height: 40px;
+  }
+
+  .chat-candidate-name {
+    font-size: 14px;
+  }
+
+  .chat-applied-status {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .messages-title {
+    font-size: 2rem;
+  }
+
+  .search-input-container {
+    width: 100%;
+  }
+
+  .candidate-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .candidate-name,
+  .candidate-job,
+  .candidate-message {
+    font-size: 12px;
+  }
+
+  .message-sender {
+    font-size: 13px;
+  }
+
+  .message-time {
+    font-size: 11px;
+  }
+
+  .message-content {
+    font-size: 13px;
+  }
+
+  .send-message-button {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+}

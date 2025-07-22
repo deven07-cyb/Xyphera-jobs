@@ -1,0 +1,351 @@
+/*   
+:root {
+    --primary-blue: #03367c;
+    --primary-blue-dark: #03367c;
+    --white: #ffffff;
+    --black: #141b34;
+    --gray: #6b7280;
+    --light-gray: #f7fafc;
+    --search-bg: #ececec;  
+}
+
+ 
+.homepage-wrapper {
+    font-family: 'Inter', sans-serif;
+    color: var(--black);
+    background-color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.main-content-one {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+ 
+.back-button-container {
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-button:hover {
+    color: var(--primary-blue);
+}
+
+ 
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-bar-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    width: 937px;  
+    height: 74px;  
+    border: 1px solid #ccc;
+    border-radius: 10px;  
+    background-color: var(--search-bg);
+    overflow: hidden;
+}
+
+.search-icon-wrapper {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon-image {
+    width: 24px;
+    height: 24px;
+}
+ 
+.search-input-field {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: none;
+    color: #000000;
+}
+
+.search-input-field::placeholder {
+    color: var(--gray);
+}
+
+.search-clear-button {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.search-clear-button:hover {
+    color: var(--black);
+}
+
+.filter-options-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.experience-filter-dropdown {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.experience-filter-dropdown:hover {
+    background-color: #e0e0e0;
+}
+
+.additional-filters-button {
+    padding: 10px 15px;
+    width: 100px;  
+    height: 74px;  
+    background-color: var(--search-bg);  
+    border: 1px solid #ccc;
+    border-radius: 10px;  
+    font-size: 16px;
+    color: var(--gray);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.additional-filters-button:hover {
+    background-color: #e0e0e0;
+}
+
+ 
+.matching-profiles-section {
+    margin-top: 20px;
+}
+
+.matching-profiles-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+
+.candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.candidate-card {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.candidate-card:hover {
+    transform: translateY(-5px);
+}
+
+.candidate-image-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 10px;
+}
+
+.candidate-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+}
+
+.verified-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.verified-badge img {
+    width: 100%;
+    height: 100%;
+}
+
+.candidate-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.candidate-role {
+    font-size: 14px;
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+}
+
+.candidate-experience,
+.candidate-availability,
+.candidate-skills {
+    font-size: 13px;
+    color: var(--gray);
+    margin: 3px 0;
+}
+
+.candidate-experience strong,
+.candidate-availability strong,
+.candidate-skills strong {
+    color: var(--black);
+}
+
+.candidate-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.view-profile-button {
+    padding: 8px 15px;
+    background-color: #0a0f14;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.view-profile-button:hover {
+    background-color: #0056b3;
+}
+
+.chat-button {
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.no-candidates-message {
+    font-size: 16px;
+    color: var(--gray);
+    text-align: center;
+}
+
+  
+@media (max-width: 768px) {
+    .search-bar-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-input-container {
+        width: 100%;
+        height: 50px;  
+    }
+
+    .additional-filters-button {
+        width: 100%;
+        height: 50px; 
+    }
+
+    .filter-options-container {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .experience-filter-dropdown {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .candidates-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .candidate-name {
+        font-size: 14px;
+    }
+
+    .candidate-experience,
+    .candidate-availability,
+    .candidate-skills {
+        font-size: 12px;
+    }
+
+    .view-profile-button,
+    .chat-button {
+        padding: 6px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .candidates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .candidate-image-container {
+        width: 60px;
+        height: 60px;
+    }
+
+    .verified-badge {
+        width: 20px;
+        height: 20px;
+    }
+} 
+
+
+ */
+
+
+
+ 
