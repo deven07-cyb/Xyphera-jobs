@@ -418,7 +418,7 @@
 // //               value={formData.officeAddress}
 // //               onChange={handleInputChange}
 // //             />
-            
+
 // //           </div>
 // //         </section>
 
@@ -426,7 +426,7 @@
 // //         <section className="psn-section">
 // //           <h2 className="psn-section-heading">3. Account Settings & Preferences</h2>
 // //           <div className="psn-form-group">
-             
+
 // //               <input
 // //                 type="text"
 // //                 className="psn-input"
@@ -435,8 +435,8 @@
 // //                 checked={formData.notifications}
 // //                 onChange={handleCheckboxChange}
 // //               />
-             
-             
+
+
 // //               <input
 // //                 type="text"
 // //                  className="psn-input"
@@ -445,11 +445,11 @@
 // //                 checked={formData.subscriptions.newsletter}
 // //                 onChange={handleSubscriptionsChange}
 // //               />
-               
-             
+
+
 // //           </div>
 // //           <div className="psn-form-group">
-             
+
 // //               <input
 // //                 type="text"
 // //                  className="psn-input"
@@ -458,9 +458,9 @@
 // //                 checked={formData.updatePassword}
 // //                 onChange={handleCheckboxChange}
 // //               />
-               
-           
-            
+
+
+
 // //               <input
 // //                 type="text"
 // //                  className="psn-input"
@@ -469,8 +469,8 @@
 // //                 checked={formData.deleteAccount}
 // //                 onChange={handleCheckboxChange}
 // //               />
-      
-             
+
+
 // //           </div>
 // //         </section>
 
@@ -865,7 +865,7 @@
 
 // export default ProfileSetup; 
 
- 
+
 
 
 // import React, { useState, useEffect } from 'react';
@@ -1378,6 +1378,8 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../ReusableComponents/Header';
 import Footer from '../../ReusableComponents/Footer';
 import './ProfileSetup.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileSetup = () => {
   const navigate = useNavigate();
@@ -1421,7 +1423,7 @@ const ProfileSetup = () => {
       setError('');
 
       try {
-        const response = await fetch('http://ec2-107-22-99-147.compute-1.amazonaws.com:5000/api/v1/employees/profile', {
+        const response = await fetch('http://127.0.0.1:5000/api/v1/employees/profile', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -1461,7 +1463,7 @@ const ProfileSetup = () => {
           presentAddress: data.data.address || '',
           qualification: data.data.qualification || '',
           phoneNumber: data.data.phone || '',
-          skills: data.data.summary || '',
+          skills: data.data.skills || '',
           bio: data.data.summary || '',
           contactEmail: data.data.email || '',
           contactPhone: data.data.contact_phone || data.data.phone || '',
@@ -1472,7 +1474,8 @@ const ProfileSetup = () => {
           deleteAccount: data.data.delete_account !== undefined ? data.data.delete_account : false,
         });
 
-        setProfilePhotoUrl(data.data.profile_photo || '');
+        setProfilePhotoUrl(`http://127.0.0.1:5000/${(data.data.profile_url || '').replace(/\\/g, '/')}`);
+
         setResumeUrl(data.data.resume_url || '');
         console.log('Fetched Profile Data:', JSON.stringify(data, null, 2));
       } catch (err) {
@@ -1529,57 +1532,55 @@ const ProfileSetup = () => {
       return;
     }
 
-    // Validate required fields
-    if (!formData.firstName || !formData.lastName || !formData.phoneNumber || !formData.contactEmail || !formData.locations || !formData.category || !formData.skills) {
-      setError('Please fill in all required fields: First Name, Last Name, Phone Number, Contact Email, City, Category, Skills');
-      return;
+    const formDataToSend = new FormData();
+    formDataToSend.append('first_name', formData.firstName);
+    formDataToSend.append('last_name', formData.lastName);
+    formDataToSend.append('phone', formData.phoneNumber);
+    formDataToSend.append('city', formData.locations);
+    formDataToSend.append('current_position', formData.category);
+    formDataToSend.append('skills', formData.skills);
+    formDataToSend.append('summary', formData.bio);
+    formDataToSend.append('address', formData.presentAddress || '');
+    formDataToSend.append('qualification', formData.qualification || '');
+    formDataToSend.append('phone', formData.contactPhone || '');
+    formDataToSend.append('office_address', formData.officeAddress || '');
+
+    // Only append the file if it exists
+    if (resumeFile) {
+      formDataToSend.append('resume', resumeFile);
     }
 
-    // Prepare JSON payload
-    const payload = {
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      phone: formData.phoneNumber,
-      email: formData.contactEmail,
-      city: formData.locations,
-      current_position: formData.category,
-      summary: formData.skills || formData.bio,
-      address: formData.presentAddress || null,
-      qualification: formData.qualification || null,
-      contact_phone: formData.contactPhone || null,
-      office_address: formData.officeAddress || null,
-      subscriptions: formData.subscriptions,
-      notifications: formData.notifications,
-      update_password: formData.updatePassword,
-      delete_account: formData.deleteAccount,
-    };
+    if(profilePhoto){
+      formDataToSend.append('profile_image', profilePhoto);
+    }
 
-    console.log('Payload:', JSON.stringify(payload, null, 2));
+    console.log('FormData:', formDataToSend);
 
     try {
-      const response = await fetch('http://ec2-107-22-99-147.compute-1.amazonaws.com:5000/api/v1/employees/profile', {
+      const response = await fetch('http://127.0.0.1:5000/api/v1/employees/profile', {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
+          // Note: Do NOT set Content-Type here. The browser sets it automatically for FormData.
         },
-        body: JSON.stringify(payload),
+        body: formDataToSend,
       });
 
       const data = await response.json();
       console.log('PUT Response:', JSON.stringify(data, null, 2));
 
       if (response.ok) {
-        setSuccess('Employee profile updated successfully!');
-        setTimeout(() => navigate('/'), 2000);
+        toast.success('Employee profile updated successfully!');
+        // setTimeout(() => navigate('/'), 2000);
       } else {
-        throw new Error(data.message || 'Failed to update employee profile');
+        toast.success(data.message);
       }
     } catch (err) {
       setError(err.message || 'An error occurred while updating the profile.');
       console.error('PUT Error:', err);
     }
   };
+
 
   const handleCancel = () => navigate(-1);
   const handleBack = () => navigate(-1);
@@ -1588,20 +1589,14 @@ const ProfileSetup = () => {
     <div className="psn-profile-container">
       <Header />
       <main className="psn-main-content">
-        <div style={{ position: 'relative' }} className="psn-heading-subheading">
-          <button style={{ color: '#000000', position: 'relative' }} className="psn-back-button" onClick={handleBack}>
-            <img src="/imageswebsite/arrowleft.png" alt="backarrow" /> Back
-          </button>
-        </div>
 
         {loading && <div>Loading profile...</div>}
         {success && <div className="psn-success-message">{success}</div>}
         {error && <div className="psn-error-message">{error}</div>}
 
         <div className="psn-image-section">
-          <h1 className="psn-title">Profile Setup</h1>
+          <h1 className="psn-title" style={{ marginTop: '0px' }}>Profile Setup</h1>
           <div
-            className="psn-image-placeholder"
             style={{
               width: '250px',
               height: '250px',
@@ -1611,6 +1606,7 @@ const ProfileSetup = () => {
               alignItems: 'center',
               border: '1px solid #ccc',
               borderRadius: '50%',
+              marginBottom: '1rem',
             }}
           >
             {profilePhoto ? (
@@ -1618,17 +1614,22 @@ const ProfileSetup = () => {
                 src={URL.createObjectURL(profilePhoto)}
                 alt="Profile"
                 className="psn-profile-image"
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             ) : profilePhotoUrl ? (
               <img
                 src={profilePhotoUrl}
                 alt="Profile"
                 className="psn-profile-image"
-                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             ) : (
-              <div style={{ color: '#999', fontSize: '14px' }}>No Image</div>
+              <img
+                src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+                alt="Profile"
+                className="psn-profile-image"
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
             )}
           </div>
           <label className="psn-edit-button">
@@ -1728,18 +1729,33 @@ const ProfileSetup = () => {
             />
           </div>
           <div className="psn-form-group psn-resume-group">
-            <input
-              type="text"
-              className="psn-input"
-              placeholder="Upload Resume (PDF, DOC, DOCX)"
-              value={resumeFile ? resumeFile.name : resumeUrl ? 'Resume Uploaded' : ''}
-              disabled
-            />
-            {resumeUrl && !resumeFile && (
-              <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="psn-file-link">
+            {resumeFile ? (
+              <input
+                type="text"
+                className="psn-input"
+                placeholder="Upload Resume (PDF, DOC, DOCX)"
+                value={resumeFile.name}
+                disabled
+              />
+            ) : resumeUrl ? (
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="psn-input psn-file-link"
+              >
                 View Resume
               </a>
+            ) : (
+              <input
+                type="text"
+                className="psn-input"
+                placeholder="Upload Resume (PDF, DOC, DOCX)"
+                value=""
+                disabled
+              />
             )}
+
             <label className="psn-upload-button">
               +
               <input

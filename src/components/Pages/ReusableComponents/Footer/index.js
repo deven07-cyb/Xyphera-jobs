@@ -25,8 +25,9 @@ const Footer = () => {
   const handleFacebook = () => window.open('https://www.facebook.com', '_blank');
   const handleTwitter = () => window.open('https://www.twitter.com', '_blank');
   const handleYoutube = () => window.open('https://www.youtube.com', '_blank');
-  const handleLinkedin = () => window.open('https://www.linkedin.com', '_blank');
+  const handleTelegram = () => window.open('https://www.telegram.com', '_blank');
   const handleInstagram = () => window.open('https://www.instagram.com', '_blank');
+  const handleMail = () => window.open('https://www.gmail.com', '_blank');
 
   return (
     <footer className="footer-container">
@@ -62,7 +63,7 @@ const Footer = () => {
           <div className="footer-subscription-form">
             <div className="footer-email-input-container">
               <span className="footer-email-icon">
-                <img  src="/imageswebsite/feather_mail (2).png" alt="Email Icon" />
+                <img src="/imageswebsite/mail.png" alt="Email Icon" />
               </span>
               <input type="email" placeholder="Enter your email" className="footer-email-input" />
               <button className="footer-subscribe-btn">
@@ -73,23 +74,26 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p style={{color:"white"}} className="footer-copyright">© Copyright 2025. All Rights Reserved</p>
+        <span style={{color:"white"}} className="footer-copyright">© Copyright 2025. All Rights Reserved</span>
         <div className="footer-social-links">
           <h4 className="footer-social-title">FOLLOW US</h4>
           <button className="footer-social-btn" onClick={handleFacebook}>
-            <img src="/imageswebsite/facebook.png" alt="Facebook" className="footer-social-icon" />
+            <img src="/imageswebsite/footer-facebook.svg" alt="Facebook" className="footer-social-icon" />
           </button>
-          <button className="footer-social-btn" onClick={handleTwitter}>
-            <img src="https://i.ibb.co/k2xkSK87/Div-footer-desktop-rounded-circle-feah-2.png" alt="Twitter" className="footer-social-icon" />
+          <button className="footer-social-btn" onClick={handleTelegram}>
+            <img src="/imageswebsite/footer-telegram.svg" alt="Facebook" className="footer-social-icon" />
           </button>
           <button className="footer-social-btn" onClick={handleYoutube}>
-            <img src="https://i.ibb.co/ZPJ9HFk/Div-footer-desktop-rounded-circle-feah-3.png" alt="YouTube" className="footer-social-icon" />
+            <img src="/imageswebsite/footer-youtube.svg" alt="Facebook" className="footer-social-icon" />
           </button>
-          <button className="footer-social-btn" onClick={handleLinkedin}>
-            <img src="https://i.ibb.co/YH8nh1w/Div-footer-desktop-rounded-circle-feah-4.png" alt="LinkedIn" className="footer-social-icon" />
+          <button className="footer-social-btn" onClick={handleTwitter}>
+            <img src="/imageswebsite/footer-x.svg" alt="Facebook" className="footer-social-icon" />
           </button>
           <button className="footer-social-btn" onClick={handleInstagram}>
-            <img src="https://i.ibb.co/398X27Jc/Div-footer-desktop-rounded-circle-feah-5.png" alt="Instagram" className="footer-social-icon" />
+            <img src="/imageswebsite/footer-instagram.svg" alt="Facebook" className="footer-social-icon" />
+          </button>
+          <button className="footer-social-btn" onClick={handleMail}>
+            <img src="/imageswebsite/footer-mail.svg" alt="Facebook" className="footer-social-icon" />
           </button>
         </div>
       </div>

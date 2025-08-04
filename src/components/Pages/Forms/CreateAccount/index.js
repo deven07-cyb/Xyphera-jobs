@@ -1,1553 +1,542 @@
-// // import React, { useState } from 'react';
-// // import './createaccount.css';
-
-// // const CreateAccount = () => {
-// //   const [formData, setFormData] = useState({
-// //     fullName: '',
-// //     email: '',
-// //     password: '',
-// //     confirmPassword: '',
-// //     accountType: 'employers',
-// //     username: '',
-// //   });
-
-// //   const [errors, setErrors] = useState({});
-// //   const [isLoading, setIsLoading] = useState(false);
-
-// //   const validateForm = () => {
-// //     const newErrors = {};
-
-// //     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required';
-// //     if (!formData.email.trim()) {
-// //       newErrors.email = 'Email is required';
-// //     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-// //       newErrors.email = 'Email is invalid';
-// //     }
-// //     if (!formData.password) {
-// //       newErrors.password = 'Password is required';
-// //     } else if (formData.password.length < 8) {
-// //       newErrors.password = 'Password must be at least 8 characters';
-// //     }
-// //     if (formData.password !== formData.confirmPassword) {
-// //       newErrors.confirmPassword = 'Passwords do not match';
-// //     }
-
-// //     setErrors(newErrors);
-// //     return Object.keys(newErrors).length === 0;
-// //   };
-
-// //   const handleInputChange = (e) => {
-// //     const { name, value } = e.target;
-// //     setFormData((prev) => ({
-// //       ...prev,
-// //       [name]: value,
-// //     }));
-// //     if (errors[name]) {
-// //       setErrors((prev) => ({ ...prev, [name]: '' }));
-// //     }
-// //   };
-
-// //   const getUserTypeNumber = () => {
-// //     return formData.accountType === 'employers' ? 2 : 1;
-// //   };
-
-// //   const sendOTP = async (email) => {
-// //     try {
-// //       const response = await fetch('http://107.22.99.147:8080/send-otp', {
-// //         method: 'POST',
-// //         headers: {
-// //           'Content-Type': 'application/json',
-// //         },
-// //         body: JSON.stringify({
-// //           email: email,
-// //         }),
-// //       });
-
-// //       if (!response.ok) {
-// //         const errorData = await response.json();
-// //         throw new Error(errorData.message || 'Failed to send OTP');
-// //       }
-
-// //       const data = await response.json();
-// //       console.log('OTP sent successfully:', data);
-// //       return true;
-// //     } catch (err) {
-// //       throw new Error(err.message || 'Failed to send verification code');
-// //     }
-// //   };
-
-// //   const handleSubmit = async (e) => {
-// //     e.preventDefault();
-
-// //     if (!validateForm()) return;
-
-// //     setIsLoading(true);
-// //     try {
-// //       // First, create the account
-// //       const signupResponse = await fetch('http://107.22.99.147:8080/signup', {
-// //         method: 'POST',
-// //         headers: {
-// //           'Content-Type': 'application/json',
-// //         },
-// //         body: JSON.stringify({
-// //           email: formData.email,
-// //           password: formData.password,
-// //           fullname: formData.fullName,
-// //           user_type: getUserTypeNumber(),
-// //         }),
-// //       });
-
-// //       const signupData = await signupResponse.json();
-
-// //       if (!signupResponse.ok) {
-// //         if (signupData.error && signupData.error.includes('duplicate key value')) {
-// //           throw new Error('This email is already registered');
-// //         }
-// //         throw new Error(signupData.error || 'Signup failed');
-// //       }
-
-// //       // After successful signup, send OTP
-// //       await sendOTP(formData.email);
-
-// //       // Store user data in localStorage
-// //       localStorage.setItem(
-// //         'userData',
-// //         JSON.stringify({
-// //           username: formData.username,
-// //           accountType: formData.accountType,
-// //           email: formData.email,
-// //         })
-// //       );
-
-// //       // Redirect to email verification page
-// //       window.location.href = '/emailverification';
-// //     } catch (error) {
-// //       if (error.message.includes('Failed to fetch')) {
-// //         setErrors({ submit: 'Unable to connect to the server. Please check your network or try again later.' });
-// //       } else {
-// //         setErrors({ submit: error.message });
-// //       }
-// //     } finally {
-// //       setIsLoading(false);
-// //     }
-// //   };
-
-// //   return (
-// //     <div className="create-container">
-// //       <div className="create-leftSection">
-// //         <h1 className="create-heading">
-// //           To secure Your financial future, You must actively find a job and apply diligently
-// //         </h1>
-// //         <div className="create-stats">
-// //           <div className="create-statItem">
-// //             <div className="blur-background">
-// //               <img
-// //                 src="https://i.ibb.co/1GhLTp3Y/account-setting-03.png"
-// //                 alt="Verified Employers"
-// //                 className="create-statIcon"
-// //               />
-// //             </div>
-// //             <div className="create-start-container">
-// //               <span className="create-statNumber">5,734</span>
-// //               <span className="create-statLabel">Verified Employers</span>
-// //             </div>
-// //           </div>
-// //           <div className="create-statItem">
-// //             <div className="blur-background">
-// //               <img
-// //                 src="https://i.ibb.co/YFt0wVwj/user-search-01.png"
-// //                 alt="Active Job Seekers"
-// //                 className="create-statIcon"
-// //               />
-// //             </div>
-// //             <div className="create-start-container">
-// //               <span className="create-statNumber">12,359</span>
-// //               <span className="create-statLabel">Active Job Seekers</span>
-// //             </div>
-// //           </div>
-// //           <div className="create-statItem">
-// //             <div className="blur-background">
-// //               <img
-// //                 src="https://i.ibb.co/Kj03Kp0R/user-add-01.png"
-// //                 alt="New Candidates"
-// //                 className="create-statIcon"
-// //               />
-// //             </div>
-// //             <div className="create-start-container">
-// //               <span className="create-statNumber">1,812</span>
-// //               <span className="create-statLabel">New Candidates</span>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </div>
-
-// //       <div className="create-rightSection">
-// //         <div className="create-innerRightContainer">
-// //           <div className="create-logo">Logo</div>
-// //           <h2 className="create-signInTitle">Step 1</h2>
-// //           <h2 className="create-createAccountTitle">Create account</h2>
-
-// //           <div className="create-accountLinkContainer">
-// //             <p className="create-createAccountLink">
-// //               Already have an account? <a className="create-acreateacount" href="/signin">Log in</a>
-// //             </p>
-// //             <select
-// //               name="accountType"
-// //               className="create-accountTypeSelect"
-// //               value={formData.accountType}
-// //               onChange={handleInputChange}
-// //             >
-// //               <option value="employers">Employers</option>
-// //               <option value="jobseekers">Employee</option>
-// //             </select>
-// //           </div>
-
-// //           <form className="create-loginForm" onSubmit={handleSubmit}>
-// //             <div className="create-formRow">
-// //               <div>
-// //                 <input
-// //                   type="text"
-// //                   name="fullName"
-// //                   placeholder="Full Name"
-// //                   className="create-inputField"
-// //                   value={formData.fullName}
-// //                   onChange={handleInputChange}
-// //                 />
-// //                 {errors.fullName && <span className="error">{errors.fullName}</span>}
-// //               </div>
-// //               <div>
-// //                 <input
-// //                   type="text"
-// //                   name="username"
-// //                   placeholder="Username"
-// //                   className="create-inputField"
-// //                   value={formData.username}
-// //                   onChange={handleInputChange}
-// //                 />
-// //               </div>
-// //             </div>
-
-// //             <div>
-// //               <input
-// //                 type="email"
-// //                 name="email"
-// //                 placeholder="Email address"
-// //                 className="create-inputField"
-// //                 value={formData.email}
-// //                 onChange={handleInputChange}
-// //               />
-// //               {errors.email && <span className="error">{errors.email}</span>}
-// //             </div>
-
-// //             <div>
-// //               <input
-// //                 type="password"
-// //                 name="password"
-// //                 placeholder="Password"
-// //                 className="create-inputField"
-// //                 value={formData.password}
-// //                 onChange={handleInputChange}
-// //               />
-// //               {errors.password && <span className="error">{errors.password}</span>}
-// //             </div>
-
-// //             <div>
-// //               <input
-// //                 type="password"
-// //                 name="confirmPassword"
-// //                 placeholder="Confirm Password"
-// //                 className="create-inputField"
-// //                 value={formData.confirmPassword}
-// //                 onChange={handleInputChange}
-// //               />
-// //               {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
-// //             </div>
-
-// //             <div className="create-termsCheckbox">
-// //               <input type="checkbox" className="create-checkbox" required />
-// //               <label className="readandagree">
-// //                 I’ve read and agree with your <span className="sapntermscolor">Terms of Services</span>
-// //               </label>
-// //             </div>
-
-// //             <button className="create-signInButton" type="submit" disabled={isLoading}>
-// //               {isLoading ? 'Loading...' : 'Next'} <span>→</span>
-// //             </button>
-
-// //             {errors.submit && <span className="error submit-error">{errors.submit}</span>}
-// //           </form>
-
-// //           <div className="create-orSeparator">or</div>
-
-// //           <div className="login-social-buttons">
-// //             <button className="login-social-button login-facebook-button">
-// //               <img
-// //                 src="https://i.ibb.co/rKM88Gp1/Employers-Logo-2.png"
-// //                 alt="Facebook Logo"
-// //                 className="facebooklogogooglelogo"
-// //               />
-// //               Sign in with Facebook
-// //             </button>
-// //             <button className="login-social-button login-google-button">
-// //               <img
-// //                 src="https://i.ibb.co/1hxd82L/Employers-Logo-3.png"
-// //                 alt="Google Logo"
-// //                 className="facebooklogogooglelogo"
-// //               />
-// //               Sign in with Google
-// //             </button>
-// //           </div>
-// //         </div>
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default CreateAccount;
-
-
-
-// import React, { useState } from 'react';
-// import './createaccount.css';
-
-// const CreateAccount = () => {
-//   const [formData, setFormData] = useState({
-//     fullName: '',
-//     email: '',
-//     password: '',
-//     confirmPassword: '',
-//     accountType: 'employers',
-//     username: '',
-//   });
-
-//   const [errors, setErrors] = useState({});
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const validateForm = () => {
-//     const newErrors = {};
-
-//     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required';
-//     if (!formData.email.trim()) {
-//       newErrors.email = 'Email is required';
-//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-//       newErrors.email = 'Email is invalid';
-//     }
-//     if (!formData.password) {
-//       newErrors.password = 'Password is required';
-//     } else if (formData.password.length < 8) {
-//       newErrors.password = 'Password must be at least 8 characters';
-//     }
-//     if (formData.password !== formData.confirmPassword) {
-//       newErrors.confirmPassword = 'Passwords do not match';
-//     }
-
-//     setErrors(newErrors);
-//     return Object.keys(newErrors).length === 0;
-//   };
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//     if (errors[name]) {
-//       setErrors((prev) => ({ ...prev, [name]: '' }));
-//     }
-//   };
-
-//   const getUserTypeNumber = () => {
-//     return formData.accountType === 'employers' ? 2 : 1;
-//   };
-
-//   const sendOTP = async (email) => {
-//     try {
-//       const response = await fetch('http://192.168.55.103:5000/api/auth/send-otp', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           email: email,
-//         }),
-//       });
-
-//       if (!response.ok) {
-//         const errorData = await response.json();
-//         throw new Error(errorData.error || 'Failed to send OTP');
-//       }
-
-//       const data = await response.json();
-//       console.log('OTP sent successfully:', data);
-//       return true;
-//     } catch (err) {
-//       throw new Error(err.message || 'Failed to send verification code');
-//     }
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!validateForm()) return;
-
-//     setIsLoading(true);
-//     try {
-//       // First, create the account
-//       const signupResponse = await fetch('http://192.168.55.103:5000/api/auth/signup', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           email: formData.email,
-//           password: formData.password,
-//           fullname: formData.fullName,
-//           user_type: getUserTypeNumber(),
-//         }),
-//       });
-
-//       const signupData = await signupResponse.json();
-
-//       if (!signupResponse.ok) {
-//         throw new Error(signupData.error || 'Signup failed');
-//       }
-
-//       // After successful signup, send OTP
-//       await sendOTP(formData.email);
-
-//       // Store user data in localStorage
-//       localStorage.setItem(
-//         'userData',
-//         JSON.stringify({
-//           username: formData.username,
-//           accountType: formData.accountType,
-//           email: formData.email,
-//         })
-//       );
-
-//       // Redirect to email verification page
-//       window.location.href = '/emailverification';
-//     } catch (error) {
-//       if (error.message.includes('Failed to fetch')) {
-//         setErrors({ submit: 'Unable to connect to the server. Please check your network or try again later.' });
-//       } else {
-//         setErrors({ submit: error.message });
-//       }
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="create-container">
-//       <div className="create-leftSection">
-//         <h1 className="create-heading">
-//           To secure Your financial future, You must actively find a job and apply diligently
-//         </h1>
-//         <div className="create-stats">
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/1GhLTp3Y/account-setting-03.png"
-//                 alt="Verified Employers"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">5,734</span>
-//               <span className="create-statLabel">Verified Employers</span>
-//             </div>
-//           </div>
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/YFt0wVwj/user-search-01.png"
-//                 alt="Active Job Seekers"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">12,359</span>
-//               <span className="create-statLabel">Active Job Seekers</span>
-//             </div>
-//           </div>
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/Kj03Kp0R/user-add-01.png"
-//                 alt="New Candidates"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">1,812</span>
-//               <span className="create-statLabel">New Candidates</span>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="create-rightSection">
-//         <div className="create-innerRightContainer">
-//           <div className="create-logo">Logo</div>
-//           <h2 className="create-signInTitle">Step 1</h2>
-//           <h2 className="create-createAccountTitle">Create account</h2>
-
-//           <div className="create-accountLinkContainer">
-//             <p className="create-createAccountLink">
-//               Already have an account? <a className="create-acreateacount" href="/signin">Log in</a>
-//             </p>
-//             <select
-//               name="accountType"
-//               className="create-accountTypeSelect"
-//               value={formData.accountType}
-//               onChange={handleInputChange}
-//             >
-//               <option value="employers">Employers</option>
-//               <option value="jobseekers">Employee</option>
-//             </select>
-//           </div>
-
-//           <form className="create-loginForm" onSubmit={handleSubmit}>
-//             <div className="create-formRow">
-//               <div>
-//                 <input
-//                   type="text"
-//                   name="fullName"
-//                   placeholder="Full Name"
-//                   className="create-inputField"
-//                   value={formData.fullName}
-//                   onChange={handleInputChange}
-//                 />
-//                 {errors.fullName && <span className="error">{errors.fullName}</span>}
-//               </div>
-//               <div>
-//                 <input
-//                   type="text"
-//                   name="username"
-//                   placeholder="Username"
-//                   className="create-inputField"
-//                   value={formData.username}
-//                   onChange={handleInputChange}
-//                 />
-//               </div>
-//             </div>
-
-//             <div>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Email address"
-//                 className="create-inputField"
-//                 value={formData.email}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.email && <span className="error">{errors.email}</span>}
-//             </div>
-
-//             <div>
-//               <input
-//                 type="password"
-//                 name="password"
-//                 placeholder="Password"
-//                 className="create-inputField"
-//                 value={formData.password}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.password && <span className="error">{errors.password}</span>}
-//             </div>
-
-//             <div>
-//               <input
-//                 type="password"
-//                 name="confirmPassword"
-//                 placeholder="Confirm Password"
-//                 className="create-inputField"
-//                 value={formData.confirmPassword}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
-//             </div>
-
-//             <div className="create-termsCheckbox">
-//               <input type="checkbox" className="create-checkbox" required />
-//               <label className="readandagree">
-//                 I’ve read and agree with your <span className="sapntermscolor">Terms of Services</span>
-//               </label>
-//             </div>
-
-//             <button className="create-signInButton" type="submit" disabled={isLoading}>
-//               {isLoading ? 'Loading...' : 'Next'} <span>→</span>
-//             </button>
-
-//             {errors.submit && <span className="error submit-error">{errors.submit}</span>}
-//           </form>
-
-//           <div className="create-orSeparator">or</div>
-
-//           <div className="login-social-buttons">
-//             <button className="login-social-button login-facebook-button">
-//               <img
-//                 src="https://i.ibb.co/rKM88Gp1/Employers-Logo-2.png"
-//                 alt="Facebook Logo"
-//                 className="facebooklogogooglelogo"
-//               />
-//               Sign in with Facebook
-//             </button>
-//             <button className="login-social-button login-google-button">
-//               <img
-//                 src="https://i.ibb.co/1hxd82L/Employers-Logo-3.png"
-//                 alt="Google Logo"
-//                 className="facebooklogogooglelogo"
-//               />
-//               Sign in with Google
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CreateAccount; 
- 
-
-
-// import React, { useState } from 'react';
-// import './createaccount.css';
-
-// const CreateAccount = () => {
-//   const [formData, setFormData] = useState({
-//     fullName: '',
-//     email: '',
-//     password: '',
-//     confirmPassword: '',
-//     accountType: 'employers',
-//     username: '',
-//   });
-
-//   const [errors, setErrors] = useState({});
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [workInProgress, setWorkInProgress] = useState(false);
-
-//   const validateForm = () => {
-//     const newErrors = {};
-
-//     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required';
-//     if (!formData.email.trim()) {
-//       newErrors.email = 'Email is required';
-//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-//       newErrors.email = 'Email is invalid';
-//     }
-//     if (!formData.password) {
-//       newErrors.password = 'Password is required';
-//     } else if (formData.password.length < 8) {
-//       newErrors.password = 'Password must be at least 8 characters';
-//     }
-//     if (formData.password !== formData.confirmPassword) {
-//       newErrors.confirmPassword = 'Passwords do not match';
-//     }
-
-//     setErrors(newErrors);
-//     return Object.keys(newErrors).length === 0;
-//   };
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//     if (errors[name]) {
-//       setErrors((prev) => ({ ...prev, [name]: '' }));
-//     }
-//   };
-
-//   const sendOTP = async (email) => {
-//     try {
-//       const response = await fetch('http://192.168.55.103:5000/api/auth/send-otp', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({
-//           email: email,
-//         }),
-//       });
-
-//       if (!response.ok) {
-//         const errorData = await response.json();
-//         throw new Error(errorData.error || 'Failed to send OTP');
-//       }
-
-//       const data = await response.json();
-//       console.log('OTP sent successfully:', data);
-//       return true;
-//     } catch (err) {
-//       throw new Error(err.message || 'Failed to send verification code');
-//     }
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!validateForm()) return;
-
-//     setIsLoading(true);
-//     setWorkInProgress(true);
-//     try {
-//       // Log the request payload
-//       const requestBody = {
-//         username: formData.username,
-//         email: formData.email,
-//         password: formData.password,
-//         confirm_password: formData.confirmPassword,
-//       };
-//       console.log('Request Payload:', requestBody);
-
-//       // First, create the account
-//       const signupResponse = await fetch('http://ec2-107-22-99-147.compute-1.amazonaws.com:3000/api/v1/auth/register', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(requestBody),
-//       });
-
-//       const signupData = await signupResponse.json();
-//       console.log('Server Response:', signupData); // Log the response
-
-//       if (!signupResponse.ok) {
-//         if (signupData.message === 'Username already exists') {
-//           setErrors({ username: 'This username is already taken. Please choose another one.' });
-//         } else {
-//           throw new Error(signupData.message || 'Signup failed');
-//         }
-//         return;
-//       }
-
-//       // After successful signup, send OTP
-//       await sendOTP(formData.email);
-
-//       // Store user data in localStorage
-//       localStorage.setItem(
-//         'userData',
-//         JSON.stringify({
-//           username: formData.username,
-//           accountType: formData.accountType,
-//           email: formData.email,
-//         })
-//       );
-
-//       // Redirect to email verification page
-//       window.location.href = '/emailverification';
-//     } catch (error) {
-//       if (error.message.includes('Failed to fetch')) {
-//         setErrors({ submit: 'Unable to connect to the server. Please check your network or try again later.' });
-//       } else {
-//         setErrors({ submit: error.message });
-//       }
-//       console.error('Error:', error); // Log the error
-//     } finally {
-//       setIsLoading(false);
-//       setWorkInProgress(false);
-//     }
-//   };
-
-//   return (
-//     <div className="create-container">
-//       <div className="create-leftSection">
-//         <h1 className="create-heading">
-//           To secure Your financial future, You must actively find a job and apply diligently
-//         </h1>
-//         <div className="create-stats">
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/1GhLTp3Y/account-setting-03.png"
-//                 alt="Verified Employers"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">5,734</span>
-//               <span className="create-statLabel">Verified Employers</span>
-//             </div>
-//           </div>
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/YFt0wVwj/user-search-01.png"
-//                 alt="Active Job Seekers"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">12,359</span>
-//               <span className="create-statLabel">Active Job Seekers</span>
-//             </div>
-//           </div>
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/Kj03Kp0R/user-add-01.png"
-//                 alt="New Candidates"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">1,812</span>
-//               <span className="create-statLabel">New Candidates</span>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="create-rightSection">
-//         <div className="create-innerRightContainer">
-//           <div className="create-logo">Logo</div>
-//           <h2 className="create-signInTitle">Step 1</h2>
-//           <h2 className="create-createAccountTitle">Create account</h2>
-
-//           <div className="create-accountLinkContainer">
-//             <p className="create-createAccountLink">
-//               Already have an account? <a className="create-acreateacount" href="/signin">Log in</a>
-//             </p>
-//             <select
-//               name="accountType"
-//               className="create-accountTypeSelect"
-//               value={formData.accountType}
-//               onChange={handleInputChange}
-//             >
-//               <option value="employers">Employers</option>
-//               <option value="jobseekers">Employee</option>
-//             </select>
-//           </div>
-
-//           <form className="create-loginForm" onSubmit={handleSubmit}>
-//             <div className="create-formRow">
-//               <div>
-//                 <input
-//                   type="text"
-//                   name="fullName"
-//                   placeholder="Full Name"
-//                   className="create-inputField"
-//                   value={formData.fullName}
-//                   onChange={handleInputChange}
-//                 />
-//                 {errors.fullName && <span className="error">{errors.fullName}</span>}
-//               </div>
-//               <div>
-//                 <input
-//                   type="text"
-//                   name="username"
-//                   placeholder="Username"
-//                   className="create-inputField"
-//                   value={formData.username}
-//                   onChange={handleInputChange}
-//                 />
-//                 {errors.username && <span className="error">{errors.username}</span>}
-//               </div>
-//             </div>
-
-//             <div>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Email address"
-//                 className="create-inputField"
-//                 value={formData.email}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.email && <span className="error">{errors.email}</span>}
-//             </div>
-
-//             <div>
-//               <input
-//                 type="password"
-//                 name="password"
-//                 placeholder="Password"
-//                 className="create-inputField"
-//                 value={formData.password}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.password && <span className="error">{errors.password}</span>}
-//             </div>
-
-//             <div>
-//               <input
-//                 type="password"
-//                 name="confirmPassword"
-//                 placeholder="Confirm Password"
-//                 className="create-inputField"
-//                 value={formData.confirmPassword}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
-//             </div>
-
-//             <div className="create-termsCheckbox">
-//               <input type="checkbox" className="create-checkbox" required />
-//               <label className="readandagree">
-//                 I’ve read and agree with your <span className="sapntermscolor">Terms of Services</span>
-//               </label>
-//             </div>
-
-//             <button className="create-signInButton" type="submit" disabled={isLoading}>
-//               {isLoading ? 'Loading...' : 'Next'} <span>→</span>
-//             </button>
-
-//             {workInProgress && <span className="work-in-progress">Work in progress...</span>}
-//             {errors.submit && <span className="error submit-error">{errors.submit}</span>}
-//           </form>
-
-//           <div className="create-orSeparator">or</div>
-
-//           <div className="login-social-buttons">
-//             <button className="login-social-button login-facebook-button">
-//               <img
-//                 src="https://i.ibb.co/rKM88Gp1/Employers-Logo-2.png"
-//                 alt="Facebook Logo"
-//                 className="facebooklogogooglelogo"
-//               />
-//               Sign in with Facebook
-//             </button>
-//             <button className="login-social-button login-google-button">
-//               <img
-//                 src="https://i.ibb.co/1hxd82L/Employers-Logo-3.png"
-//                 alt="Google Logo"
-//                 className="facebooklogogooglelogo"
-//               />
-//               Sign in with Google
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CreateAccount; 
-
-
-
-// import React, { useState } from 'react';
-// import './createaccount.css';
-
-// const CreateAccount = () => {
-//   const [formData, setFormData] = useState({
-//     fullName: '',
-//     email: '',
-//     password: '',
-//     confirmPassword: '',
-//     accountType: 'employers',
-//     username: '',
-//   });
-
-//   const [errors, setErrors] = useState({});
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [workInProgress, setWorkInProgress] = useState(false);
-
-//   const validateForm = () => {
-//     const newErrors = {};
-
-//     if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required';
-//     if (!formData.email.trim()) {
-//       newErrors.email = 'Email is required';
-//     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-//       newErrors.email = 'Email is invalid';
-//     }
-//     if (!formData.password) {
-//       newErrors.password = 'Password is required';
-//     } else if (formData.password.length < 8) {
-//       newErrors.password = 'Password must be at least 8 characters';
-//     }
-//     if (formData.password !== formData.confirmPassword) {
-//       newErrors.confirmPassword = 'Passwords do not match';
-//     }
-
-//     setErrors(newErrors);
-//     return Object.keys(newErrors).length === 0;
-//   };
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//     if (errors[name]) {
-//       setErrors((prev) => ({ ...prev, [name]: '' }));
-//     }
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!validateForm()) return;
-
-//     setIsLoading(true);
-//     setWorkInProgress(true);
-//     try {
-//       // Log the request payload
-//       const requestBody = {
-//         username: formData.username,
-//         email: formData.email,
-//         password: formData.password,
-//         confirm_password: formData.confirmPassword,
-//       };
-//       console.log('Request Payload:', requestBody);
-
-//       // First, create the account
-//       const signupResponse = await fetch('http://ec2-107-22-99-147.compute-1.amazonaws.com:3000/api/v1/auth/register', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(requestBody),
-//       });
-
-//       const signupData = await signupResponse.json();
-//       console.log('Server Response:', signupData); // Log the response
-
-//       if (!signupResponse.ok) {
-//         if (signupData.message === 'Username already exists') {
-//           setErrors({ username: 'This username is already taken. Please choose another one.' });
-//         } else {
-//           throw new Error(signupData.message || 'Signup failed');
-//         }
-//         return;
-//       }
-
-//       // Removed OTP sending step
-//       // Store user data in localStorage
-//       localStorage.setItem(
-//         'userData',
-//         JSON.stringify({
-//           username: formData.username,
-//           accountType: formData.accountType,
-//           email: formData.email,
-//         })
-//       );
-
-//       // Redirect to email verification page
-//       window.location.href = '/emailverification';
-//     } catch (error) {
-//       if (error.message.includes('Failed to fetch')) {
-//         setErrors({ submit: 'Unable to connect to the server. Please check your network or try again later.' });
-//       } else {
-//         setErrors({ submit: error.message });
-//       }
-//       console.error('Error:', error); // Log the error
-//     } finally {
-//       setIsLoading(false);
-//       setWorkInProgress(false);
-//     }
-//   };
-
-//   return (
-//     <div className="create-container">
-//       <div className="create-leftSection">
-//         <h1 className="create-heading">
-//           To secure Your financial future, You must actively find a job and apply diligently
-//         </h1>
-//         <div className="create-stats">
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/1GhLTp3Y/account-setting-03.png"
-//                 alt="Verified Employers"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">5,734</span>
-//               <span className="create-statLabel">Verified Employers</span>
-//             </div>
-//           </div>
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/YFt0wVwj/user-search-01.png"
-//                 alt="Active Job Seekers"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">12,359</span>
-//               <span className="create-statLabel">Active Job Seekers</span>
-//             </div>
-//           </div>
-//           <div className="create-statItem">
-//             <div className="blur-background">
-//               <img
-//                 src="https://i.ibb.co/Kj03Kp0R/user-add-01.png"
-//                 alt="New Candidates"
-//                 className="create-statIcon"
-//               />
-//             </div>
-//             <div className="create-start-container">
-//               <span className="create-statNumber">1,812</span>
-//               <span className="create-statLabel">New Candidates</span>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="create-rightSection">
-//         <div className="create-innerRightContainer">
-//           <div className="create-logo">Logo</div>
-//           <h2 className="create-signInTitle">Step 1</h2>
-//           <h2 className="create-createAccountTitle">Create account</h2>
-
-//           <div className="create-accountLinkContainer">
-//             <p className="create-createAccountLink">
-//               Already have an account? <a className="create-acreateacount" href="/signin">Log in</a>
-//             </p>
-//             <select
-//               name="accountType"
-//               className="create-accountTypeSelect"
-//               value={formData.accountType}
-//               onChange={handleInputChange}
-//             >
-//               <option value="employers">Employers</option>
-//               <option value="jobseekers">Employee</option>
-//             </select>
-//           </div>
-
-//           <form className="create-loginForm" onSubmit={handleSubmit}>
-//             <div className="create-formRow">
-//               <div>
-//                 <input
-//                   type="text"
-//                   name="fullName"
-//                   placeholder="Full Name"
-//                   className="create-inputField"
-//                   value={formData.fullName}
-//                   onChange={handleInputChange}
-//                 />
-//                 {errors.fullName && <span className="error">{errors.fullName}</span>}
-//               </div>
-//               <div>
-//                 <input
-//                   type="text"
-//                   name="username"
-//                   placeholder="Username"
-//                   className="create-inputField"
-//                   value={formData.username}
-//                   onChange={handleInputChange}
-//                 />
-//                 {errors.username && <span className="error">{errors.username}</span>}
-//               </div>
-//             </div>
-
-//             <div>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 placeholder="Email address"
-//                 className="create-inputField"
-//                 value={formData.email}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.email && <span className="error">{errors.email}</span>}
-//             </div>
-
-//             <div>
-//               <input
-//                 type="password"
-//                 name="password"
-//                 placeholder="Password"
-//                 className="create-inputField"
-//                 value={formData.password}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.password && <span className="error">{errors.password}</span>}
-//             </div>
-
-//             <div>
-//               <input
-//                 type="password"
-//                 name="confirmPassword"
-//                 placeholder="Confirm Password"
-//                 className="create-inputField"
-//                 value={formData.confirmPassword}
-//                 onChange={handleInputChange}
-//               />
-//               {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
-//             </div>
-
-//             <div className="create-termsCheckbox">
-//               <input type="checkbox" className="create-checkbox" required />
-//               <label className="readandagree">
-//                 I’ve read and agree with your <span className="sapntermscolor">Terms of Services</span>
-//               </label>
-//             </div>
-
-//             <button className="create-signInButton" type="submit" disabled={isLoading}>
-//               {isLoading ? 'Loading...' : 'Next'} <span>→</span>
-//             </button>
-
-//             {workInProgress && <span className="work-in-progress">Work in progress...</span>}
-//             {errors.submit && <span className="error submit-error">{errors.submit}</span>}
-//           </form>
-
-//           <div className="create-orSeparator">or</div>
-
-//           <div className="login-social-buttons">
-//             <button className="login-social-button login-facebook-button">
-//               <img
-//                 src="https://i.ibb.co/rKM88Gp1/Employers-Logo-2.png"
-//                 alt="Facebook Logo"
-//                 className="facebooklogogooglelogo"
-//               />
-//               Sign in with Facebook
-//             </button>
-//             <button className="login-social-button login-google-button">
-//               <img
-//                 src="https://i.ibb.co/1hxd82L/Employers-Logo-3.png"
-//                 alt="Google Logo"
-//                 className="facebooklogogooglelogo"
-//               />
-//               Sign in with Google
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CreateAccount;  
-
- 
-
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './createaccount.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const CreateAccount = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-    accountType: 'employee', // Default to 'employee' (jobseekers)
-  });
-  const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [workInProgress, setWorkInProgress] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [userName, setUserName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [companyName, setCompanyName] = useState('');
 
-  const validateForm = () => {
-    const newErrors = {};
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
+  const [userNameError, setUserNameError] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [companyNameError, setCompanyNameError] = useState('');
 
-    if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
-    if (!formData.username.trim()) newErrors.username = 'Username is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email is invalid';
-    }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number must be 10 digits';
-    }
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters';
-    }
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [accountType, setAccountType] = useState('employee');
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
-    }
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
+    let valid = true;
 
-    if (!validateForm()) return;
+    // First Name validation
+    if (!firstName.trim()) {
+      setFirstNameError('First Name is required');
+      valid = false;
+    } else {
+      setFirstNameError('');
+    }
 
-    setIsLoading(true);
-    setWorkInProgress(true);
-    try {
-      // Prepare request payload based on form data
-      const requestBody = {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        phone: formData.phone,
-      };
-      console.log('Request Payload:', JSON.stringify(requestBody, null, 2));
+    // Last Name validation
+    if (!lastName.trim()) {
+      setLastNameError('Last Name is required');
+      valid = false;
+    } else {
+      setLastNameError('');
+    }
 
-      // Determine endpoint based on accountType
-      const endpoint =
-        formData.accountType === 'employee'
-          ? 'http://ec2-107-22-99-147.compute-1.amazonaws.com:5000/api/v1/employees'
-          : 'http://ec2-107-22-99-147.compute-1.amazonaws.com:5000/api/v1/employers';
+    // User Name validation
+    if (!userName.trim()) {
+      setUserNameError('User Name is required');
+      valid = false;
+    } else {
+      setUserNameError('');
+    }
 
-      // Send POST request to create account
-      const signupResponse = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      });
-
-      const signupData = await signupResponse.json();
-      console.log('Server Response:', JSON.stringify(signupData, null, 2));
-
-      if (!signupResponse.ok) {
-        if (signupData.message === 'Username already exists') {
-          setErrors({ username: 'This username is already taken. Please choose another one.' });
-        } else if (signupData.message === 'Email already exists') {
-          setErrors({ email: 'This email is already registered. Please use another email.' });
-        } else if (signupData.message && signupData.details) {
-          setErrors({ submit: `Validation failed: ${JSON.stringify(signupData.details)}` });
-        } else {
-          throw new Error(signupData.message || 'Signup failed');
-        }
-        return;
-      }
-
-      // Store user data and token (if returned)
-      localStorage.setItem(
-        'userData',
-        JSON.stringify({
-          username: formData.username,
-          email: formData.email,
-          accountType: formData.accountType,
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          phone: formData.phone,
-        })
-      );
-      if (signupData.token) {
-        localStorage.setItem('authToken', signupData.token);
-      }
-
-      // Redirect to email verification page
-      navigate('/emailverification');
-    } catch (error) {
-      if (error.message.includes('Failed to fetch')) {
-        setErrors({ submit: 'Unable to connect to the server. Please check your network or try again later.' });
+    // Phone Number validation (only for employees)
+    if (accountType === 'employee') {
+      if (!phoneNumber.trim()) {
+        setPhoneNumberError('Phone Number is required');
+        valid = false;
+      } else if (!(/^\d{10}$/.test(phoneNumber))) {
+        setPhoneNumberError('Please enter a valid 10-digit phone number');
+        valid = false;
       } else {
-        setErrors({ submit: error.message });
+        setPhoneNumberError('');
       }
-      console.error('Error:', error);
-    } finally {
-      setIsLoading(false);
-      setWorkInProgress(false);
+    }
+
+    // Company Name validation (only for employers)
+    if (accountType === 'employer') {
+      if (!companyName.trim()) {
+        setCompanyNameError('Company Name is required');
+        valid = false;
+      } else {
+        setCompanyNameError('');
+      }
+    }
+
+    // Email validation
+    if (!email.trim()) {
+      setEmailError('Email is required');
+      valid = false;
+    } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+      setEmailError('Please enter a valid email address');
+      valid = false;
+    } else {
+      setEmailError('');
+    }
+
+    // Password validation
+    if (!password.trim()) {
+      setPasswordError('Password is required');
+      valid = false;
+    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,}/.test(password)) {
+      setPasswordError(
+        'Password must contain uppercase, lowercase, number, and special character'
+      );
+      valid = false;
+    } else {
+      setPasswordError('');
+    }
+
+    // Confirm Password validation
+    if (!confirmPassword.trim()) {
+      setConfirmPasswordError('Confirm Password is required');
+      valid = false;
+    } else if (confirmPassword !== password) {
+      setConfirmPasswordError('Passwords do not match');
+      valid = false;
+    } else {
+      setConfirmPasswordError('');
+    }
+
+    // Stop execution if validation fails
+    if (!valid) return;
+
+    if (accountType === 'employee') {
+      const payload = {
+        username: userName,
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        password: password,
+        phone: phoneNumber,
+      };
+      console.log('Employee Payload:', payload);
+
+      try {
+        const response = await axios.post(
+          'http://127.0.0.1:5000/api/v1/employees',
+          payload,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        const { success: apiSuccess, message, data } = response.data;
+        if (apiSuccess) {
+          toast.success('Signup successful!');
+          console.log('Employee data:', data);
+          navigate('/signin');
+        } else {
+          toast.error(message || 'Registration failed');
+        }
+      } catch (err) {
+        toast.error(err.response?.data?.message || err.message || 'An unexpected error occurred');
+      }
+    } else if (accountType === 'employer') {
+      const payload = {
+        username: userName,
+        email: email,
+        first_name: firstName,
+        last_name: lastName,
+        password: password,
+        company_name: companyName,
+      };
+      console.log('Employer Payload:', payload);
+
+      try {
+        const response = await axios.post(
+          'http://127.0.0.1:5000/api/v1/employers',
+          payload,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+        const { success: apiSuccess, message, data } = response.data;
+        if (apiSuccess) {
+          toast.success('Signup successful!');
+          console.log('Employer data:', data);
+          navigate('/signin');
+        } else {
+          toast.error(message || 'Registration failed');
+        }
+      } catch (err) {
+        toast.error(err.response?.data?.message || err.message || 'An unexpected error occurred');
+      }
     }
   };
 
   return (
-    <div className="create-container">
-      <div className="create-leftSection">
-        <h1 className="create-heading">
-          To secure Your financial future, You must actively find a job and apply diligently
-        </h1>
-        <div className="create-stats">
-          <div className="create-statItem">
-            <div className="blur-background">
-              <img
-                src="https://i.ibb.co/1GhLTp3Y/account-setting-03.png"
-                alt="Verified Employers"
-                className="create-statIcon"
-              />
+    <div className="signin-container">
+      <div className="signin-left-section">
+        <div className="signin-left-content">
+          <h1 className="signin-heading">
+            To Secure Your Financial Future, You Must Actively Find A Job And Apply Diligently
+          </h1>
+          <div className="signin-stats">
+            <div className="signin-stat-item d-grid">
+              <div className="signin-stat-icon-wrapper">
+                <img src='/imageswebsite/signin-01.svg'
+                  alt="01"
+                  className="login-stat-icon"
+                />
+              </div>
+              <div className="signin-stat-text">
+                <span className="signin-stat-number">5,734</span>
+                <span className="signin-stat-label">Verified Companies</span>
+              </div>
             </div>
-            <div className="create-start-container">
-              <span className="create-statNumber">5,734</span>
-              <span className="create-statLabel">Verified Employers</span>
+            <div className="signin-stat-item d-grid">
+              <div className="signin-stat-icon-wrapper">
+                <img src='/imageswebsite/signin-02.svg'
+                  alt="02"
+                  className="login-stat-icon"
+                />
+              </div>
+              <div className="signin-stat-text">
+                <span className="signin-stat-number">12,734</span>
+                <span className="signin-stat-label">Active Job Openings</span>
+              </div>
             </div>
-          </div>
-          <div className="create-statItem">
-            <div className="blur-background">
-              <img
-                src="https://i.ibb.co/YFt0wVwj/user-search-01.png"
-                alt="Active Job Seekers"
-                className="create-statIcon"
-              />
-            </div>
-            <div className="create-start-container">
-              <span className="create-statNumber">12,359</span>
-              <span className="create-statLabel">Active Job Seekers</span>
-            </div>
-          </div>
-          <div className="create-statItem">
-            <div className="blur-background">
-              <img
-                src="https://i.ibb.co/Kj03Kp0R/user-add-01.png"
-                alt="New Candidates"
-                className="create-statIcon"
-              />
-            </div>
-            <div className="create-start-container">
-              <span className="create-statNumber">1,812</span>
-              <span className="create-statLabel">New Candidates</span>
+            <div className="signin-stat-item d-grid">
+              <div className="signin-stat-icon-wrapper">
+                <img src='/imageswebsite/signin-03.svg'
+                  className="login-stat-icon"
+                  alt="03"
+                />
+              </div>
+              <div className="signin-stat-text">
+                <span className="signin-stat-number">1,812</span>
+                <span className="signin-stat-label">New Companies</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="create-rightSection">
-        <div className="create-innerRightContainer">
-          <div className="create-logo">Logo</div>
-          <h2 className="create-signInTitle">Step 1</h2>
-          <h2 className="create-createAccountTitle">Create Account</h2>
-
-          <div className="create-accountLinkContainer">
-            <p className="create-createAccountLink">
-              Already have an account? <a className="create-acreateacount" href="/signin">Log in</a>
-            </p>
-            <select
-              name="accountType"
-              className="create-accountTypeSelect"
-              value={formData.accountType}
-              onChange={handleInputChange}
-            >
-              <option value="employee">Job Seeker</option>
-              <option value="employer">Employer</option>
-            </select>
+      <div className="signin-right-section">
+        <div className="signin-form-container">
+          <div className="signin-logo">
+            <div className="logo-circle"></div>
+            <span>Logo</span>
+          </div>
+          <div className='d-flex justify-content-between'>
+            <div>
+              <h2 className="signin-title">Create account</h2>
+              <p className="signin-create-account">
+                Already have account? <a href="/signin">Log in</a>
+              </p>
+            </div>
+            <div>
+              <select
+                id="accountType"
+                name="accountType"
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  borderRadius: '4px',
+                  border: '1px solid #ccc',
+                  fontSize: '16px',
+                }}
+                value={accountType}
+                onChange={(e) => setAccountType(e.target.value)}
+              >
+                <option value="employee">Employee</option>
+                <option value="employer">Employer</option>
+              </select>
+            </div>
           </div>
 
-          <form className="create-loginForm" onSubmit={handleSubmit}>
-            <div className="create-formRow">
-              <div>
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  className="create-inputField"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                />
-                {errors.firstName && <span className="error">{errors.firstName}</span>}
+          <form onSubmit={handleSignIn} className="signin-form">
+            <div className="row g-2">
+              <div className="col-12 col-md-6">
+                <div className="signin-input-group">
+                  <input
+                    id="firstname"
+                    type="text"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setFirstName(value);
+
+                      if (!value.trim()) {
+                        setFirstNameError('First Name is required');
+                      } else {
+                        setFirstNameError('');
+                      }
+                    }}
+                  />
+                  {firstNameError && (
+                    <span className="input-error">{firstNameError}</span>
+                  )}
+                </div>
               </div>
-              <div>
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  className="create-inputField"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                />
-                {errors.lastName && <span className="error">{errors.lastName}</span>}
+
+              <div className="col-12 col-md-6">
+                <div className="signin-input-group">
+                  <input
+                    id="lastname"
+                    type="text"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setLastName(value);
+
+                      if (!value.trim()) {
+                        setLastNameError('Last Name is required');
+                      } else {
+                        setLastNameError('');
+                      }
+                    }}
+                  />
+                  {lastNameError && (
+                    <span className="input-error">{lastNameError}</span>
+                  )}
+                </div>
               </div>
-            </div>
-            <div>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                className="create-inputField"
-                value={formData.username}
-                onChange={handleInputChange}
-              />
-              {errors.username && <span className="error">{errors.username}</span>}
-            </div>
-            <div>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email address"
-                className="create-inputField"
-                value={formData.email}
-                onChange={handleInputChange}
-              />
-              {errors.email && <span className="error">{errors.email}</span>}
-            </div>
-            <div>
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone Number (e.g., 9876543210)"
-                className="create-inputField"
-                value={formData.phone}
-                onChange={handleInputChange}
-              />
-              {errors.phone && <span className="error">{errors.phone}</span>}
-            </div>
-            <div>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="create-inputField"
-                value={formData.password}
-                onChange={handleInputChange}
-              />
-              {errors.password && <span className="error">{errors.password}</span>}
-            </div>
-            <div>
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                className="create-inputField"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-              />
-              {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
             </div>
 
-            <div className="create-termsCheckbox">
-              <input type="checkbox" className="create-checkbox" required />
-              <label className="readandagree">
-                I’ve read and agree with your <span className="sapntermscolor">Terms of Services</span>
+            <div className="row g-2">
+              <div className="col-12 col-md-6">
+                <div className="signin-input-group">
+                  <input
+                    id="username"
+                    type="text"
+                    placeholder="User Name"
+                    value={userName}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setUserName(value);
+
+                      if (!value.trim()) {
+                        setUserNameError('User Name is required');
+                      } else {
+                        setUserNameError('');
+                      }
+                    }}
+                  />
+                  {userNameError && (
+                    <span className="input-error">{userNameError}</span>
+                  )}
+                </div>
+              </div>
+
+              {accountType === 'employee' ? (
+                <div className="col-12 col-md-6">
+                  <div className="signin-input-group">
+                    <input
+                      id="phonenumber"
+                      type="text"
+                      placeholder="Phone Number"
+                      value={phoneNumber}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setPhoneNumber(value);
+
+                        if (!value.trim()) {
+                          setPhoneNumberError('Phone Number is required');
+                        } else if (!(/^\d{10}$/.test(value))) {
+                          setPhoneNumberError('Please enter a valid 10-digit phone number');
+                        } else {
+                          setPhoneNumberError('');
+                        }
+                      }}
+                    />
+                    {phoneNumberError && (
+                      <span className="input-error">{phoneNumberError}</span>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="col-12 col-md-6">
+                  <div className="signin-input-group">
+                    <input
+                      id="companyname"
+                      type="text"
+                      placeholder="Company Name"
+                      value={companyName}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setCompanyName(value);
+
+                        if (!value.trim()) {
+                          setCompanyNameError('Company Name is required');
+                        } else {
+                          setCompanyNameError('');
+                        }
+                      }}
+                    />
+                    {companyNameError && (
+                      <span className="input-error">{companyNameError}</span>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            <div className="signin-input-group">
+              <input
+                id="email"
+                type="text"
+                placeholder='Enter Email'
+                value={email}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setEmail(value);
+
+                  if (!value.trim()) {
+                    setEmailError('Email is required');
+                  } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))) {
+                    setEmailError('Please enter a valid email address');
+                  } else {
+                    setEmailError('');
+                  }
+                }}
+              />
+              {emailError && <span className="input-error">{emailError}</span>}
+            </div>
+
+            <div className="signin-input-group">
+              <div className="password-wrapper">
+                <input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setPassword(value);
+
+                    if (!value.trim()) {
+                      setPasswordError('Password is required');
+                    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,}/.test(value)) {
+                      setPasswordError(
+                        'Password must contain uppercase, lowercase, number, and special character'
+                      );
+                    } else {
+                      setPasswordError('');
+                    }
+                  }}
+                />
+                {!showPassword ? (
+                  <img
+                    src="/imageswebsite/close-eye.svg"
+                    alt="Hide password"
+                    className="signin-password-icon"
+                    onClick={togglePasswordVisibility}
+                  />
+                ) : (
+                  <img
+                    src="/imageswebsite/open-eye.svg"
+                    alt="Show password"
+                    className="signin-password-icon"
+                    onClick={togglePasswordVisibility}
+                  />
+                )}
+              </div>
+              {passwordError && <span className="input-error">{passwordError}</span>}
+            </div>
+
+            <div className="signin-input-group">
+              <div className="password-wrapper">
+                <input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    setConfirmPassword(value);
+
+                    if (!value.trim()) {
+                      setConfirmPasswordError('Confirm Password is required');
+                    } else if (value !== password) {
+                      setConfirmPasswordError('Passwords do not match');
+                    } else {
+                      setConfirmPasswordError('');
+                    }
+                  }}
+                />
+                {!showConfirmPassword ? (
+                  <img
+                    src="/imageswebsite/close-eye.svg"
+                    alt="Hide confirm password"
+                    className="signin-password-icon"
+                    onClick={toggleConfirmPasswordVisibility}
+                  />
+                ) : (
+                  <img
+                    src="/imageswebsite/open-eye.svg"
+                    alt="Show confirm password"
+                    className="signin-password-icon"
+                    onClick={toggleConfirmPasswordVisibility}
+                  />
+                )}
+              </div>
+              {confirmPasswordError && (
+                <span className="input-error">{confirmPasswordError}</span>
+              )}
+            </div>
+
+            <div className="signin-options">
+              <label className="signin-remember-me">
+                <input type="checkbox" />
+                <span>Remember Me</span>
               </label>
+              <a href="/forgetpassword" className="signin-forgot-password">
+                Forget password
+              </a>
             </div>
 
-            <button className="create-signInButton" type="submit" disabled={isLoading}>
-              {isLoading ? 'Loading...' : 'Next'} <span>→</span>
+            <button type="submit" className="signin-button">
+              <span>Sign Up</span>
+              <span className='arrow-right'>→</span>
             </button>
-
-            {workInProgress && <span className="work-in-progress">Work in progress...</span>}
-            {errors.submit && <span className="error submit-error">{errors.submit}</span>}
           </form>
 
-          <div className="create-orSeparator">or</div>
+          <div className="signin-separator">
+            <span className="line"></span>
+            <span className="or-text">or</span>
+            <span className="line"></span>
+          </div>
 
-          <div className="login-social-buttons">
-            <button className="login-social-button login-facebook-button">
-              <img
-                src="https://i.ibb.co/rKM88Gp1/Employers-Logo-2.png"
-                alt="Facebook Logo"
-                className="facebooklogogooglelogo"
-              />
-              Sign in with Facebook
+          <div className="signin-social-login">
+            <button type="button" className="signin-social-button facebook">
+              <img src="https://i.ibb.co/rKM88Gp1/Employers-Logo-2.png" alt="Facebook" />
+              <span>Sign in with Facebook</span>
             </button>
-            <button className="login-social-button login-google-button">
-              <img
-                src="https://i.ibb.co/1hxd82L/Employers-Logo-3.png"
-                alt="Google Logo"
-                className="facebooklogogooglelogo"
-              />
-              Sign in with Google
+            <button type="button" className="signin-social-button google">
+              <img src="https://i.ibb.co/1hxd82L/Employers-Logo-3.png" alt="Google" />
+              <span>Sign in with Google</span>
             </button>
           </div>
         </div>

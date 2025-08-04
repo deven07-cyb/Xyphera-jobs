@@ -11,6 +11,8 @@ const Header = () => {
   const [isCreateAccountPopupOpen, setIsCreateAccountPopupOpen] = useState(false);
   const [isEmailVerificationPopupOpen, setIsEmailVerificationPopupOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isConfirmLogout, setIsConfirmLogout] = useState(false);
+  const [islogin, setIslogin] = useState(false);
 
   const profileDropdownRef = useRef(null);
   const loginDropdownRef = useRef(null);
@@ -20,7 +22,7 @@ const Header = () => {
   const mobileMenuRef = useRef(null);
 
   const handleSaved = () => {
-    navigate('/SAVEDJOB');
+    navigate('/savedjobs');
     setIsMobileMenuOpen(false);
   };
   const handleAppliedJobs = () => {
@@ -81,6 +83,18 @@ const Header = () => {
   const handleLogout = () => {
     localStorage.removeItem('authToken'); // Clear token on logout
     navigate('/signin');
+    setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+  };
+
+  const cancelLogout = () => {
+    setIsConfirmLogout(false);
+    setIsDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+  };
+
+  const confirmLogout = () => {
+    setIsConfirmLogout(true);
     setIsDropdownOpen(false);
     setIsMobileMenuOpen(false);
   };
@@ -146,6 +160,10 @@ const Header = () => {
         setIsMobileMenuOpen(false);
       }
     };
+    if (localStorage.getItem('authToken') !== null) {
+      console.log('true');
+      setIslogin(true);
+    }
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
@@ -201,7 +219,7 @@ const Header = () => {
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           username,
           email,
           password,
@@ -417,7 +435,7 @@ const Header = () => {
               </button>
             </div>
           )}
-          <div className="xyh-avatar-container" onClick={toggleDropdown} ref={profileDropdownRef}> 
+          <div className="xyh-avatar-container" onClick={toggleDropdown} ref={profileDropdownRef}>
             <img
               src="/imageswebsite/Group 160 (1).png"
               alt="Profile"
@@ -525,174 +543,155 @@ const Header = () => {
         </div>
       </nav>
       <div className="xyh-user-profile xyh-desktop-user-profile">
-        <button
-          onClick={toggleLoginDropdown}
-          className="xyh-user-name"
-          aria-haspopup="true"
-          aria-expanded={isLoginDropDown}
-        >
-          Login
-        </button>
-        {isLoginDropDown && (
-          <div className="xyh-dropdown-menu xyh-login-dropdown" ref={loginDropdownRef}>
-            <button className="xyh-dropdown-item" onClick={handleLogin}>
-              <svg
-                className="xyh-dropdown-icon"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-                <polyline points="10 17 15 12 10 7" />
-                <line x1="15" y1="12" x2="3" y2="12" />
-              </svg>
+        {!islogin && (
+          <div>
+            <a
+              href="/signin"
+              className="xyh-user-name"
+              aria-haspopup="true"
+              onClick={toggleLoginDropdown}
+            >
               Login
-            </button>
-            <button className="xyh-dropdown-item" onClick={handleCreateAccount}>
-              <svg
-                className="xyh-dropdown-icon"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-                <line x1="12" y1="11" x2="12" y2="11" />
-                <path d="M12 7v-4m0 0H9m3 0h3" />
-              </svg>
-              Create Account
-            </button>
-            <button className="xyh-dropdown-item" onClick={handleEmailVerification}>
-              <svg
-                className="xyh-dropdown-icon"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-                <path d="M9 18l-6-6" />
-                <path d="M6 15l3 3" />
-              </svg>
-              Email Verification
-            </button>
+            </a>
+            <a
+              onClick={toggleLoginDropdown}
+              className="xyh-user-name"
+              aria-haspopup="true"
+              href="/signup"
+            >
+              &nbsp;&nbsp;| &nbsp;Sign Up
+            </a>
           </div>
         )}
-        <div className="xyh-avatar-container" onClick={toggleDropdown} ref={profileDropdownRef}>
-          <img
-            src="/imageswebsite/Group 160 (1).png"
-            alt="Profile"
-            className="xyh-user-avatar"
-          />
-          {isDropdownOpen && (
-            <div className="xyh-dropdown-menu">
-              <button className="xyh-dropdown-item" onClick={handleViewProfile}>
-                <svg
-                  className="xyh-dropdown-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-                View Profile
-              </button>
-              <button className="xyh-dropdown-item" onClick={handleMyJobPosts}>
-                <svg
-                  className="xyh-dropdown-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="12" y1="18" x2="12" y2="12" />
-                  <line x1="9" y1="15" x2="15" y2="15" />
-                </svg>
-                My Job Posts
-              </button>
-              <button className="xyh-dropdown-item" onClick={handleSettings}>
-                <svg
-                  className="xyh-dropdown-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l-.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v-.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                </svg>
-                Settings
-              </button>
-              <button className="xyh-dropdown-item" onClick={handleDropdownNotifications}>
-                <svg
-                  className="xyh-dropdown-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                </svg>
-                Notifications
-              </button>
-              <button className="xyh-dropdown-item" onClick={handleSaveChanges}>
-                <svg
-                  className="xyh-dropdown-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+        {islogin && (
+          <div className="xyh-avatar-container" onClick={toggleDropdown} ref={profileDropdownRef}>
+            <div className='d-flex align-items-center gap-3'>
+              <span style={{ fontSize: "20px", fontWeight: "bold" }}>{localStorage.getItem("firstName")}</span>
+              <img
+                src="/imageswebsite/Group 160 (1).png"
+                alt="Profile"
+                className="xyh-user-avatar"
+              />
+            </div>
+            {isDropdownOpen && (
+              <div className="xyh-dropdown-menu">
+                <button className="xyh-dropdown-item" onClick={handleViewProfile}>
+                  <svg
+                    className="xyh-dropdown-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                  View Profile
+                </button>
+                <button className="xyh-dropdown-item" onClick={handleMyJobPosts}>
+                  <svg
+                    className="xyh-dropdown-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <line x1="9" y1="15" x2="15" y2="15" />
+                  </svg>
+                  My Job Posts
+                </button>
+                <button className="xyh-dropdown-item" onClick={handleSettings}>
+                  <svg
+                    className="xyh-dropdown-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l-.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v-.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                  </svg>
+                  Settings
+                </button>
+                <button className="xyh-dropdown-item" onClick={handleDropdownNotifications}>
+                  <svg
+                    className="xyh-dropdown-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                  </svg>
+                  Notifications
+                </button>
+                <button className="xyh-dropdown-item" onClick={handleSaveChanges}>
+                  <svg
+                    className="xyh-dropdown-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
                   >
                     <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
                     <polyline points="17 21 17 13 7 13 7 21" />
                     <polyline points="7 3 7 8 15 8" />
-                </svg>
-                Save Changes
-              </button>
-              <button className="xyh-dropdown-item" onClick={handleLogout}>
-                <svg
-                  className="xyh-dropdown-icon"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                  <polyline points="16 17 21 12 16 7" />
-                  <line x1="21" y1="12" x2="9" y2="12" />
-                </svg>
-                Logout
-              </button>
-            </div>
-          )}
-        </div>
+                  </svg>
+                  Save Changes
+                </button>
+                <button className="xyh-dropdown-item" onClick={confirmLogout}>
+                  <svg
+                    className="xyh-dropdown-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                  </svg>
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
+      {isConfirmLogout && (
+        <div className="xyh-sign-in-popup-overlay">
+          <div className="xyh-sign-in-popup" ref={signInPopupRef}>
+            <div className="xyh-login-inner-right-container">
+              <h2 className="xyh-login-sign-in-title">Confirm Logout</h2>
+              <p style={{ textAlign: 'center', fontSize: '18px', marginTop: '2rem' }}>Are you sure you want to logout?</p>
+              <div className="xyh-login-social-buttons">
+                <button className="xyh-login-social-button xyh-login-confirm-button" onClick={handleLogout}>
+                  Confirm
+                </button>
+                <button className="xyh-login-social-button xyh-login-cancel-button" onClick={cancelLogout}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {isSignInPopupOpen && (
         <div className="xyh-sign-in-popup-overlay">
           <div className="xyh-sign-in-popup" ref={signInPopupRef}>

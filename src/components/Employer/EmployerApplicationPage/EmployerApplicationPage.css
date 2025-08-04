@@ -125,6 +125,7 @@
  justify-content: flex-start;
  padding: calc(var(--spacing-unit) * 1.25);
  width: 100%;
+ gap: 0.5rem !important
 }
 
 .job-detail {
@@ -135,22 +136,24 @@
 }
 
 .paddingimage{  
-   margin: -10px;
-   margin-left: 10px;
+   margin: 0px;
+   margin-left: 0px;
 }
 
 .detail-label {
  flex: 0 0 60%;
  font-weight: 600;
  color: #1a1a1a;
+ max-width: fit-content;
 }
 
 .status-active {
  color: var(--success-color);
- font-weight: 600;
+ font-weight: 400 !important;
  background-color: #E2FFDCC2;
- padding: calc(var(--spacing-unit) * 0.3125) calc(var(--spacing-unit) * 0.5);
+ padding: 5px;
  border-radius: 5px;
+ line-height: 15px;
 }
 
 .view-applications-btn {

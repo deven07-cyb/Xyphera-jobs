@@ -396,19 +396,23 @@ import React, { useState, useEffect } from 'react';
 import EmployerHeader from '../EmployerReusablecomponents/EmployerHeader';
 import Footer from '../../Pages/ReusableComponents/Footer';
 import './EmployerApplicationPage.css';
+import { useNavigate } from 'react-router-dom';
+import Header from '../../Pages/ReusableComponents/Header';
 
 const EmployerApplicationPage = () => {
   const [postedJobs, setPostedJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
   // Function to fetch jobs from the API
   const fetchJobs = async () => {
     try {
-      const response = await fetch('http://ec2-107-22-99-147.compute-1.amazonaws.com:5000/api/jobs', {
+      const token = localStorage.getItem('authToken');
+      const response = await fetch('http://127.0.0.1:5000/api/v1/jobs/employer/479', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
       });
 
@@ -418,6 +422,7 @@ const EmployerApplicationPage = () => {
 
       const data = await response.json();
       setPostedJobs(data.jobs); // Access the 'jobs' array from the API response
+      console.log('Posted Jobs:', data.jobs);
       setLoading(false);
     } catch (err) {
       setError(err.message);
@@ -430,9 +435,13 @@ const EmployerApplicationPage = () => {
     fetchJobs();
   }, []);
 
+  const handleViewApplications = (jobId) => {
+    navigate(`/EmployerJobOverview/${jobId}`);
+  };
+
   return (
     <div className="homepage-wrapper">
-      <EmployerHeader />
+      <Header />
       <div className="applications-container">
         <h2 className="applications-title">Applications</h2>
         <div className="tabs-container">
@@ -466,33 +475,30 @@ const EmployerApplicationPage = () => {
                   </div>
                   <div className="job-details">
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Job Title:</strong> {job.title}
+                      <strong className="detail-label">Job Title :&nbsp;</strong> {job.title}
                     </p>
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Job Type:</strong> {job.job_type}
+                      <strong className="detail-label">Job Type :&nbsp;</strong> {job.employment_type}
                     </p>
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Location:</strong> {job.location}
+                      <strong className="detail-label">Location :&nbsp;</strong> {job.location}
                     </p>
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Salary:</strong> ₹{job.salary}
+                      <strong className="detail-label">Salary :&nbsp;</strong> ₹{job.salary_min} - ₹{job.salary_max}
                     </p>
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Application Deadline:</strong>{' '}
-                      {job.application_deadline}
+                      <strong className="detail-label">Number of Applicants :&nbsp;</strong>{' '}
+                      {job.applications_count}
                     </p>
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Number of Applicants:</strong>{' '}
-                      {job.application_count}
+                      <strong className="detail-label">Job Posting Date:&nbsp;</strong>
+                      {new Date(job.created_at).toISOString().split('T')[0]}
                     </p>
                     <p className="job-detail paddingimage">
-                      <strong className="detail-label">Job Posting Date:</strong> {job.posting_date}
-                    </p>
-                    <p className="job-detail paddingimage">
-                      <strong className="detail-label">Status:</strong>{' '}
+                      <strong className="detail-label">Status :&nbsp;</strong>{' '}
                       <span className="status-active">{job.status}</span>
                     </p>
-                    <button className="view-applications-btn">
+                    <button className="view-applications-btn" onClick={() => handleViewApplications(job.id)}>
                       View Applications <span className="arrow">→</span>
                     </button>
                   </div>

@@ -86,19 +86,17 @@
   background-color: transparent;
   border: 1px solid var(--white);
   border-radius: 6px;
-  width: 110%;
-  max-width: 250px;
   overflow: hidden;
    
 }
 
 .footer-email-icon {
-  padding: var(--spacing-sm);
+  padding: 10px;
 }
 
 .footer-email-icon img {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   filter: brightness(0) invert(1); 
 }
 
@@ -120,10 +118,9 @@
 .footer-subscribe-btn {
   background: none;
   border: none;
-  padding: var(--spacing-sm);
+  padding: 10px;
   cursor: pointer;
   position: relative;
-  right: 20px;
 }
 
 .footer-subscribe-btn img {
@@ -139,7 +136,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1200px !important;
   margin: 0 auto;
   padding-top: var(--spacing-lg);
   border-top: 1px solid var(--light-gray);
@@ -147,7 +144,7 @@
 
 /* Copyright Text */
 .footer-copyright {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md) !important;
   color: var(--white);
 }
 
@@ -335,8 +332,8 @@ footer-email-input
 
   .footer-email-icon img,
   .footer-subscribe-btn img {
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
   }
 
   .footer-bottom {

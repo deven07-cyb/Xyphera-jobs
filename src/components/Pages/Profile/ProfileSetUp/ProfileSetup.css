@@ -52,7 +52,6 @@
   align-items: center;
   margin-bottom: 3rem;
   position: relative;
-  bottom: 150px;
 }
 
 .psn-image-placeholder {
@@ -133,7 +132,7 @@
 .psn-input,
 .psn-textarea {
   width: 100%;
-  padding: 1rem;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   font-size: 1.4rem;
@@ -165,7 +164,7 @@ fixed
 
 .psn-upload-button {
   position: absolute;
-  right: 1rem;
+  right: 0rem;
   top: 50%;
   transform: translateY(-50%);
   width: 3rem;
@@ -186,7 +185,6 @@ fixed
 }
 
 .psn-file-link {
-  margin-left: 1rem;
   color: #033E8A;
   text-decoration: none;
 }
@@ -297,8 +295,8 @@ fixed
   }
 
   .psn-section-heading {
-    font-size: 2rem;
-    padding: 1rem;
+    font-size: 24px;
+    padding: 10px;
   }
 
   .psn-form-group {
@@ -308,7 +306,7 @@ fixed
 
   .psn-input,
   .psn-textarea {
-    font-size: 1.4rem;
+    font-size: 16px;
   }
 
   .psn-textarea {

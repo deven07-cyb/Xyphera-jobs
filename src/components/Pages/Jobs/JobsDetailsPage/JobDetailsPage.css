@@ -17,8 +17,9 @@
 
 /* Job Details Content */
 .job-details-content {
-  padding: 60px 126px;
-  max-width: 1500px;
+  padding: 60px 0px;
+  min-width: 1300px;
+  max-width: 1300px;
   margin: 0 auto;
   flex: 1;
 }
@@ -50,14 +51,13 @@
 
 .company-logo-placeholder {
   display: flex;
-  align-items: center;
   flex-direction: column;
   gap: 20px;
 }
 
 .zomatoimagetwo {
-  width: 136px;
-  height: 102px;
+  width: 100px;
+  height: 100px;
 }
 
 .zomotoheading {
@@ -216,6 +216,13 @@
   background-color: #022b62;
 }
 
+.applyed{
+  font-size: 30px;
+    font-weight: 700;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
 /* Responsive Design */
 
 /* Tablet (768px to 1023px) */

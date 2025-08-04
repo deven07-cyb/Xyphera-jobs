@@ -44,7 +44,6 @@
   max-width: 75rem;  
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: var(--xyj-spacing-lg);
 }
 
@@ -82,7 +81,6 @@
   text-transform: capitalize;
   color: var(--xyj-primary-black);
   margin: var(--xyj-spacing-md) 0;
-  margin-top: 100px;
 }
  
 .xyj-job-form {
@@ -157,10 +155,6 @@
   resize: vertical;
 }
 
-.xyj-form-row input[type="file"] {
-  padding: var(--xyj-spacing-sm) 0;
-  border: none;
-}
 
 .xyj-form-row input::placeholder,
 .xyj-form-row textarea::placeholder {
@@ -271,7 +265,7 @@
   }
   .xyj-form-row input,
   .xyj-form-row textarea {
-    max-width: 24rem; /* 384px */
+    max-width: 25.5rem; /* 384px */
   }
   .xyj-form-row.full-width textarea {
     max-width: 100%;

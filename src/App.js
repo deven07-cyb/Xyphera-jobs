@@ -62,8 +62,10 @@ import NotificationPage from './components/Pages/Jobs/NotificationPage/Notificat
 import SubmitApplicationScreen from './components/Pages/SubmitApplicationScreen/SubmitApplicationScreen';
 import SubmitApplicationScreenTwo from './components/Pages/SubmitApplicationScreenTwo/SubmitApplicationScreenTwo';
 import ContactUs from './components/Pages/ContactUs/ContactUs';
- 
- 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
   return (
     <Router>
@@ -71,20 +73,20 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/userentered" element={<UserEneterTab />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/createaccount" element={<CreateAccount />} />
+        <Route path="/signup" element={<CreateAccount />} />
         <Route path="/addcompanydetails" element={<AddCompanyDeatils />} />
         <Route path="/verifyaccount" element={<VerifyAccount />} />
         <Route path="/companyprofile" element={<CompanyProfile />} />
         <Route path="/emailverification" element={<EmailVerification />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
         <Route path="/ContactUs" element={<ContactUs />} />
-        <Route path='/resetpassword' element={<ResetPassword/>} /> 
-        <Route path='/profilesetup' element={<ProfileSetup/>} /> 
-        <Route path='/landingpage' element={<LandingPage />} /> 
-        <Route path='/JOBSEARCHDETAILS' element={<JobsPage />} /> 
-        <Route path='/SubmitApplicationScreenTwo' element={<SubmitApplicationScreenTwo />} /> 
-        <Route path='/Jobdetailspage' element={<JobDetailsPage />} /> 
-        <Route path='/profilepage' element={<ProfilePage />} /> 
+        <Route path='/resetpassword' element={<ResetPassword />} />
+        <Route path='/profilesetup' element={<ProfileSetup />} />
+        <Route path='/landingpage' element={<LandingPage />} />
+        <Route path='/JOBSEARCHDETAILS' element={<JobsPage />} />
+        <Route path='/SubmitApplicationScreenTwo' element={<SubmitApplicationScreenTwo />} />
+        <Route path='/Jobdetailspage' element={<JobDetailsPage />} />
+        <Route path='/profilepage' element={<ProfilePage />} />
         <Route path='/applicationreviewpage' element={<ApplicationReviewPage />} />
         <Route path='/INTROPAGE' element={<IntroScreen />} />
         <Route path='/WELCOME/EMPLOYEEPAGE' element={<WelcomeEmployeepage />} />
@@ -94,28 +96,28 @@ function App() {
         <Route path='/profilepreview' element={<ProfilePreview />} />
         <Route path='/savedjobs' element={<SavedJobs />} />
         <Route path='/appliedjobs' element={<AppliedJobs />} />
-        <Route path='/subscriptionplans' element={<SubscriptionPlans />} /> 
+        <Route path='/subscriptionplans' element={<SubscriptionPlans />} />
         <Route path='/resumetemplates' element={<ResumeTemplates />} />
         <Route path='/resumeupload' element={<ResumeUpload />} />
-        <Route path='/reviewapplication' element={<ReviewApplication/>} />
-        <Route path='/resumebuilder' element={<ResumeBuilder/>} />
-        <Route path='/welcomeemployerpage' element={<WelcomeEmployerPage/>} />
-        <Route path='/employerlogin' element={<EmployerLogin/>} />
-        <Route path='/EmployerCreateAccount' element={<EmployerCreateAccount/>} />
-        <Route path='/EmployerCreateCompanyProfile' element={<EmployerCreateCompanyProfile  />} /> 
+        <Route path='/reviewapplication' element={<ReviewApplication />} />
+        <Route path='/resumebuilder' element={<ResumeBuilder />} />
+        <Route path='/welcomeemployerpage' element={<WelcomeEmployerPage />} />
+        <Route path='/employerlogin' element={<EmployerLogin />} />
+        <Route path='/EmployerCreateAccount' element={<EmployerCreateAccount />} />
+        <Route path='/EmployerCreateCompanyProfile' element={<EmployerCreateCompanyProfile />} />
         <Route path='/EmployerVerifyCompany' element={<EmployerVerifyCompany />} />
         <Route path='/EmployerHomePage' element={<EmployerHomePages />} />
         <Route path='/EmployerApplicationPage' element={<EmployerApplicationPage />} />
-        <Route path='/EE' element={<EE />}   />
-        <Route path='/EmployerJobOverview' element={<EmployerJobOverview />} />
+        <Route path='/EE' element={<EE />} />
+        <Route path='/EmployerJobOverview/:jobId' element={<EmployerJobOverview />} />
         <Route path='/EmployerTermsOfService' element={<EmployerTermsOfService />} />
         <Route path='/EmployerSubcription' element={<EmployerSubcription />} />
         <Route path='/EmployerPrivacyPolicy' element={<EmployerPrivacyPolicy />} />
         <Route path='/EmployerPostAJob' element={<EmployerPostAJob />} />
-        <Route path='/EmployerCandidateProfile' element={<EmployerCandidateProfile />} />
+        <Route path='/EmployerCandidateProfile/:id' element={<EmployerCandidateProfile />} />
         <Route path='/EmployerCandidatePage' element={<EmployerCandidatePage />} />
         <Route path='/EmployerFAQ' element={<EmployerFAQ />} />
-        <Route path='/EmployerContactUs' element={<EmployerContactUs />} /> 
+        <Route path='/EmployerContactUs' element={<EmployerContactUs />} />
         <Route path='/EmployerMassages' element={<EmployerMassages />} />
         <Route path='/EmployerAfterSearchPage' element={<EmployerAfterSearchPage />} />
         <Route path='/EmployerJobPostings' element={<EmployerJobPostings />} />
@@ -124,13 +126,24 @@ function App() {
         <Route path='/JobsCatogory' element={<JobsCatogory />} />
         <Route path='/CareerPage' element={<CareerPage />} />
         <Route path='/BlogsPage' element={<BlogsPage />} />
-        <Route path='/TermOfServices' element={ <TermOfServices />} />
-        <Route path='/PrivacyPolicyPage' element={ <PrivacyPolicyPage />} />
-        <Route path='/AboutUs' element={ <AboutUs />} />
-        <Route path='/Faqsectionone' element={ <Faqsectionone />} />
-        <Route path='/SAVEDJOB' element={ <SAVEDJOB />} />
-        
+        <Route path='/TermOfServices' element={<TermOfServices />} />
+        <Route path='/PrivacyPolicyPage' element={<PrivacyPolicyPage />} />
+        <Route path='/AboutUs' element={<AboutUs />} />
+        <Route path='/Faqsectionone' element={<Faqsectionone />} />
+        <Route path='/SAVEDJOB' element={<SAVEDJOB />} />
+
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Router>
   );
 }

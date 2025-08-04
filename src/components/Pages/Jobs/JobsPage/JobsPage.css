@@ -622,6 +622,7 @@ body {
 /* Main Container */
 .jpp-jobs-page-container {
   max-width: 1440px;
+  min-width: 1440px;
   margin: 0 auto;
   overflow-x: hidden;
 }
@@ -801,7 +802,7 @@ body {
 
 .jpp-image-button-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
@@ -851,7 +852,7 @@ body {
 
 .jpp-posted-time {
   font-size: var(--font-size-xs);
-  color: var(--light-gray);
+  color: #000000;
 }
 
 .jpp-save-button {
@@ -878,10 +879,12 @@ body {
   color: var(--gray);
   margin-bottom: var(--spacing-md);
   line-height: 1.5;
+  height: 50px;
 }
 
 .jpp-job-type-description {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-md);
 }
@@ -957,7 +960,7 @@ body {
   }
 
   .jpp-sidebar {
-    width: 25%;
+    width: 20%;
   }
 
   .jpp-job-grid {
@@ -1161,4 +1164,119 @@ body {
   }
 }
 
- 
+ /* Full Screen Loader Styles */
+.jpp-fullscreen-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jpp-loader-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.jpp-loader-container {
+  position: relative;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.jpp-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: jpp-spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes jpp-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.jpp-loader-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  text-align: center;
+}
+
+/* Alternative spinner design (you can use this instead of the above) */
+.jpp-spinner-alt {
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  border-top: 3px solid #007bff;
+  border-right: 3px solid #007bff;
+  border-radius: 50%;
+  animation: jpp-spin-alt 1.2s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes jpp-spin-alt {
+  0% { 
+    transform: rotate(0deg);
+    border-top-color: #007bff;
+    border-right-color: transparent;
+  }
+  25% { 
+    border-top-color: transparent;
+    border-right-color: #007bff;
+  }
+  50% { 
+    border-right-color: transparent;
+    border-bottom-color: #007bff;
+  }
+  75% { 
+    border-bottom-color: transparent;
+    border-left-color: #007bff;
+  }
+  100% { 
+    transform: rotate(360deg);
+    border-left-color: transparent;
+    border-top-color: #007bff;
+  }
+}
+
+/* Dots loader animation (another alternative) */
+.jpp-dots-loader {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.jpp-dots-loader div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #007bff;
+  animation: jpp-dots-bounce 1.4s ease-in-out infinite both;
+}
+
+.jpp-dots-loader div:nth-child(1) { animation-delay: -0.32s; }
+.jpp-dots-loader div:nth-child(2) { animation-delay: -0.16s; }

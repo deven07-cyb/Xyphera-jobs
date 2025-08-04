@@ -196,12 +196,11 @@ const HomePage = () => {
               <div className="category-card-content">
                 <div className="category-text-box">
                   <p className="category-name-text">
-                    <span className="category-name-part1">Jobs For </span>
-                    <span className="category-name-part2">{category.name}</span>
+                    <span className="category-name-part1">Jobs For <span className="category-name-part2">{category.name}</span></span>
                   </p>
                   <div className="category-background-label">Jobs For<br /> {category.name}</div>
                   <button className="category-view-button">
-                    View All <img src="/imageswebsite/arrohoizental.png" alt="arrow" />
+                    View All <img src="/imageswebsite/arrohoizental.svg" alt="arrow" />
                   </button>
                 </div>
                 <div className="category-image-area" style={{ backgroundImage: `url(${category.personImage})` }}></div>
